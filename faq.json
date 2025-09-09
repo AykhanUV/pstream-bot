@@ -1,0 +1,77 @@
+[
+  {
+    "topic": "language",
+    "question": "Fed-Api isn’t in English, can I change it?",
+    "answer": "If you're using Fed-Api, it often provides multiple audio languages, and Safari is the browser that best supports switching between them. If you're not using Fed-Api or the language option isn't available, the best solution is to try a different video source."
+  },
+  {
+    "topic": "wrong_episode",
+    "question": "The episode I’m watching is incorrect, how do I fix it?",
+    "answer": "If the wrong episode is displayed, please switch the video source by clicking the settings (cog) at the bottom of the player and selecting “video sources.” Note that content is automatically scraped from various sites, so we don’t control the accuracy. The content provided is not controlled by P-stream."
+  },
+  {
+    "topic": "subtitles_sync",
+    "question": "My subtitles aren’t in sync, what should I do?",
+    "answer": "You can adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can download synchronized subtitles from opensubtitles or another provider"
+  },
+  {
+    "topic": "slow_source",
+    "question": "The source I’m using is loading slowly is there a fix?",
+    "answer": "Source speed depends entirely on the hosting site. We recommend using Fed-Api, which generally offers faster speeds and a broader selection of content."
+  },
+  {
+    "topic": "add_content",
+    "question": "Can you add a specific episode or movie?",
+    "answer": "We don’t have the ability to add individual episodes or movies since our content is automatically scraped from various online sources."
+  },
+  {
+    "topic": "visual_glitches",
+    "question": "I’m experiencing visual glitches with my show/movie, what can I do?",
+    "answer": "Visual bugs are most often caused by a faulty file upload from the provider. Switching to another source may resolve the issue."
+  },
+  {
+    "topic": "video_quality",
+    "question": "The video quality isn’t what I expected, can I get a better version?",
+    "answer": "Different sources offer varying quality levels. Try changing sources; Fed-Api typically provides the widest range of quality options."
+  },
+  {
+    "topic": "fedapi_devices",
+    "question": "Does Fed-Api work on all devices? How do I set it up?",
+    "answer": "Yes, Fed-Api is compatible with all devices."
+  },
+  {
+    "topic": "extension_proxy",
+    "question": "Why do I need the extension or custom proxy?",
+    "answer": "Using the extension or a custom proxy is not about getting more sources, but about improving the stability and speed of the existing ones. It can help reduce buffering and provide a smoother streaming experience."
+  },
+  {
+    "topic": "febbox_token",
+    "question": "My febbox token fails during setup, what should I do?",
+    "answer": "If your febbox token fails, it may be due to your Internet Service Provider blocking it. We recommend setting up a custom DNS. Look up instructions specific to your device by searching “How to set a custom DNS on [your device].”"
+  },
+  {
+    "topic": "febbox/fedapi_setup",
+    "question": "How can I setup fedapi/febbox token?",
+    "answer": "You can find a detailed guide here https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+  },
+  {
+    "topic": "extension_safe",
+    "question": "Is the extension safe?",
+    "answer": "Yes, the extension is safe. You can view the source code here: https://github.com/p-stream/extension"
+  },
+  {
+    "topic": "open_source",
+    "question": "Is pstream open source?",
+    "answer": "Yes, pstream is open source. You can find the repository here: https://github.com/p-stream/p-stream"
+  },
+  {
+    "topic": "embed_feature",
+    "question": "Is there an embed for pstream? How do I use it?",
+    "answer": "Yes, Pstream provides an embed link for its content, which allows you to integrate the video player into other websites. You can find the embed link (e.g., embed.pstream.mov) on the content's page."
+  },
+  {
+    "topic": "firefox_extension",
+    "question": "Where is the Firefox extension?",
+    "answer": "The Firefox extension was accidentally deleted, but it will be back soon. You can check for updates in the announcements here: https://discord.com/channels/1267558147682205738/1267573463325868236/1414323558028541972"
+  }
+]
