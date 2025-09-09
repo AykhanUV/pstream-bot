@@ -173,7 +173,7 @@ Your primary goal is to be a silent, accurate assistant. If in doubt, do not res
 		
 		if (aiResponseText && aiResponseText !== ignoreMarker) {
 		          
-		          const disclaimer = "\n\n---\n*This is an AI-generated response and may not be accurate.*";
+		          const disclaimer = "\n-# This is AI generated, may not be accurate";
 		          const finalResponse = aiResponseText + disclaimer;
 
 		          await message.channel.sendTyping();
