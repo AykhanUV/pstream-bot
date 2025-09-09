@@ -176,7 +176,7 @@ ${faqStringForPrompt}
 The user's latest message is: "${userMessage}"
 
 Follow these instructions precisely:
-1.  **Social Context Check (VERY IMPORTANT):** Review the CHAT HISTORY. Is another user already actively helping the person asking for support? If so, you MUST NOT respond, unless you are directly mentioned by name (@P-stream support). Prioritize letting humans help each other. If a helper is present, respond with [IGNORE].
+1.  **Advanced Social Context Check (VERY IMPORTANT):** Review the last 5 messages in the CHAT HISTORY. Has another user (not the original poster) replied to the person asking for help within the last 2-3 messages? If so, a support conversation is already in progress. In this case, you MUST NOT respond unless you are explicitly mentioned by name (@P-stream support). Your goal is to avoid interrupting a human who is already helping. If a helper is actively engaged, respond with [IGNORE].
 2.  **Confidence Check:** Is the user's question directly and confidently answered by the FAQ? If not, you MUST respond with [IGNORE]. Do not guess or make up answers about topics not in the FAQ.
 3.  **Relevance Check:** Only mention a specific solution (like 'Fed-Api') if the user's problem is directly related to it (e.g., slow streaming). Do not offer unsolicited advice.
 4.  **Analyze Intent:** Is the user asking a genuine support question about pstream?
