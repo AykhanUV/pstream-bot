@@ -73,5 +73,10 @@
     "topic": "firefox_extension",
     "question": "Where is the Firefox extension?",
     "answer": "The Firefox extension was accidentally deleted, but it will be back soon. You can check for updates in the announcements here: https://discord.com/channels/1267558147682205738/1267573463325868236/1414323558028541972"
+  },
+  {
+    "topic": "watch_party",
+    "question": "Is there a watch together feature?",
+    "answer": "Yes, there is a Watch Party feature! You can access it by clicking the settings (cog) icon in the video player and selecting 'Watch Party'."
   }
 ]
