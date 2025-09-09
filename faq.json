@@ -47,7 +47,7 @@
   {
     "topic": "febbox_token",
     "question": "My febbox token fails during setup, what should I do?",
-    "answer": "If your Febbox token fails, first try setting up a custom DNS 1.1.1.1 or -nextdns, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
+    "answer": "If your Febbox token fails, first try setting up a custom DNS 1.1.1.1 or nextdns, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
   },
   {
     "topic": "febbox/fedapi_setup",
