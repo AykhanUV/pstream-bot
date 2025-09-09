@@ -47,7 +47,7 @@
   {
     "topic": "febbox_token",
     "question": "My febbox token fails during setup, what should I do?",
-    "answer": "If your febbox token fails, it may be due to your Internet Service Provider blocking it. We recommend setting up a custom DNS. Look up instructions specific to your device by searching “How to set a custom DNS on [your device].”"
+    "answer": "If your Febbox token fails, first try setting up a custom DNS, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
   },
   {
     "topic": "febbox/fedapi_setup",
