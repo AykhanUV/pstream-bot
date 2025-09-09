@@ -155,8 +155,8 @@ client.on(Events.MessageCreate, async message => {
 	
 	if (!userMessage || userMessage.length < 3) return;
 
-	// Fetch last 5 messages for context
-	const messageHistory = await message.channel.messages.fetch({ limit: 5 });
+	// Fetch last 50 messages for context
+	const messageHistory = await message.channel.messages.fetch({ limit: 50 });
 	const historyString = messageHistory.reverse().map(m => {
 		let content = `${m.author.username}: ${m.content}`;
 		if (m.embeds.length > 0) {
@@ -168,7 +168,7 @@ client.on(Events.MessageCreate, async message => {
 
 	const prompt = `You are the official Pstream Support bot. Your responses MUST be short, concise, and directly to the point. Avoid conversational filler.
 
-Here is the recent chat history for context (including embed content):
+Here is the recent chat history for the channel #${message.channel.name}. Use this to understand the current conversation's context:
 --- CHAT HISTORY START ---
 ${historyString}
 --- CHAT HISTORY END ---
