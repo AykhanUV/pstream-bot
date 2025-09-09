@@ -18,6 +18,8 @@ const client = new Client({
 
 const mutedChannels = new Map();
 const respondedThreads = new Set();
+const allowedChannels = ['general', 'ipa-exe-app-support', 'bot-commands'];
+const allowedForums = ['issues-and-bugs'];
 
 
 
@@ -51,6 +53,16 @@ client.once(Events.ClientReady, c => {
 client.on(Events.MessageCreate, async message => {
 	
 	if (message.author.bot) return;
+
+	// Check if the bot is allowed to speak in this channel
+	const channelName = message.channel.name;
+	const parentChannelName = message.channel.isThread() ? message.channel.parent?.name : null;
+	const isAllowedChannel = allowedChannels.includes(channelName);
+	const isAllowedForum = allowedForums.includes(parentChannelName);
+
+	if (!isAllowedChannel && !isAllowedForum) {
+		return;
+	}
 
 	// Check if the channel is muted
 	if (mutedChannels.has(message.channel.id) && mutedChannels.get(message.channel.id) > Date.now()) {
