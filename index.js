@@ -52,6 +52,11 @@ client.once(Events.ClientReady, c => {
 	}
 });
 
+// Gracefully handle connection errors to prevent crashes
+client.on(Events.Error, error => {
+	   console.error('A client error occurred:', error);
+});
+
 
 client.on(Events.MessageCreate, async message => {
 	
