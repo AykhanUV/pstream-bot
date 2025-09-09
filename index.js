@@ -65,8 +65,16 @@ client.on(Events.MessageCreate, async message => {
 	// Check for mute commands
 	const lowerCaseMessage = message.content.toLowerCase();
 	const isMuteCommand = lowerCaseMessage.includes('shut up') || lowerCaseMessage.includes('bot quiet');
-	const isReplyingToBot = message.reference && message.reference.messageId && (await message.channel.messages.fetch(message.reference.messageId)).author.id === client.user.id;
-	const isMentioningBot = message.mentions.has(client.user.id);
+	
+	let isReplyingToBot = false;
+	if (message.reference && message.reference.messageId) {
+		const repliedTo = await message.channel.messages.fetch(message.reference.messageId).catch(() => null);
+		if (repliedTo && repliedTo.author.id === client.user.id) {
+			isReplyingToBot = true;
+		}
+	}
+
+	const isMentioningBot = message.mentions.users.has(client.user.id);
 
 	if (isMuteCommand && (isReplyingToBot || isMentioningBot)) {
 		const muteDuration = 5 * 60 * 1000; // 5 minutes
