@@ -173,15 +173,18 @@ Your primary goal is to be a silent, accurate assistant. If in doubt, do not res
 		
 		if (aiResponseText && aiResponseText !== ignoreMarker) {
 		          
+		          const disclaimer = "\n\n---\n*This is an AI-generated response and may not be accurate.*";
+		          const finalResponse = aiResponseText + disclaimer;
+
 		          await message.channel.sendTyping();
-		 await message.reply({
-		  content: aiResponseText,
-		  allowedMentions: { repliedUser: false }
-		 });
-		 // If in a thread, mark it as responded to
-		 if (message.channel.isThread()) {
-		  respondedThreads.add(message.channel.id);
-		 }
+			await message.reply({
+				content: finalResponse,
+				allowedMentions: { repliedUser: false }
+			});
+			// If in a thread, mark it as responded to
+			if (message.channel.isThread()) {
+				respondedThreads.add(message.channel.id);
+			}
 		} else if (aiResponseText === ignoreMarker) {
 		          
 		          console.log("AI response was [IGNORE]. No reply sent.");

@@ -22,7 +22,7 @@
   {
     "topic": "add_content",
     "question": "Can you add a specific episode or movie?",
-    "answer": "We don’t have the ability to add individual episodes or movies since our content is automatically scraped from various online sources."
+    "answer": "Yes, you can request for a movie or show to be added! Please make a request in the media request channel here: https://discord.com/channels/1267558147682205738/1359951538201694379"
   },
   {
     "topic": "visual_glitches",
