@@ -73,29 +73,37 @@ client.on(Events.MessageCreate, async message => {
 	}
 
 	// Check for support toggle commands
-	const hasPermission = message.member.roles.cache.some(role => supportCommandRoles.includes(role.name)) || supportCommandUsers.includes(message.author.username);
-	if (message.content.startsWith('-support')) {
-		if (hasPermission) {
-			const command = message.content.split(' ')[1];
-			const channelId = message.channel.id;
-			let replyMsg;
-
-			if (command === 'off') {
-				disabledSupportChannels.add(channelId);
-				replyMsg = await message.reply('Support has been disabled for this channel.');
-			} else if (command === 'on') {
-				disabledSupportChannels.delete(channelId);
-				replyMsg = await message.reply('Support has been enabled for this channel.');
-			} else if (command === 'status') {
-				const status = disabledSupportChannels.has(channelId) ? 'disabled' : 'enabled';
-				replyMsg = await message.reply(`Support is currently **${status}** for this channel.`);
-			}
-			
-			if (replyMsg) {
-				setTimeout(() => replyMsg.delete().catch(console.error), 5000);
-			}
+	if (message.content.trim().startsWith('-support')) {
+		const hasPermission = message.member.roles.cache.some(role => supportCommandRoles.includes(role.name)) || supportCommandUsers.includes(message.author.username);
+		
+		if (!hasPermission) {
+			const replyMsg = await message.reply('You do not have permission to use this command.');
+			setTimeout(() => replyMsg.delete().catch(console.error), 5000);
+			return;
 		}
-		return; // Stop processing after handling a support command
+
+		const args = message.content.trim().split(/\s+/);
+		const command = args[1];
+		const channelId = message.channel.id;
+		let replyMsg;
+
+		if (command === 'off') {
+			disabledSupportChannels.add(channelId);
+			replyMsg = await message.reply('Support has been disabled for this channel.');
+		} else if (command === 'on') {
+			disabledSupportChannels.delete(channelId);
+			replyMsg = await message.reply('Support has been enabled for this channel.');
+		} else if (command === 'status') {
+			const status = disabledSupportChannels.has(channelId) ? 'disabled' : 'enabled';
+			replyMsg = await message.reply(`Support is currently **${status}** for this channel.`);
+		} else {
+			replyMsg = await message.reply('Invalid command. Use `-support <on|off|status>`.');
+		}
+
+		if (replyMsg) {
+			setTimeout(() => replyMsg.delete().catch(console.error), 5000);
+		}
+		return;
 	}
 
 	// Check if support is disabled for this channel
