@@ -40,9 +40,14 @@
     "answer": "Fed-Api is temporarily disabled while we secure a better server for it. In the meantime, we highly recommend using the CIA API for a stable and high-quality experience."
   },
   {
-    "topic": "extension_proxy",
-    "question": "Why do I need the extension or custom proxy?",
+    "topic": "proxy",
+    "question": "Why do I need the custom proxy? What does it do?",
     "answer": "Using the extension or a custom proxy is not about getting more sources, but about improving the stability and speed of the existing ones. It can help reduce buffering and provide a smoother streaming experience."
+  },
+  {
+    "topic": "extension",
+    "question": "Why do I need the extension? What does it do?",
+    "answer": "Using the extension unlock variety of new sources, which will improve your watching experience. If you want to read more visit: https://rentry.co/htagcrv4"
   },
   {
     "topic": "febbox_token",
