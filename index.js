@@ -22,7 +22,7 @@ const disabledSupportChannels = new Set();
 const allowedChannels = ['general', 'ipa-exe-app-support', 'bot-commands'];
 const allowedForums = ['issues-and-bugs'];
 const supportCommandRoles = ['P-Stream Team', 'Perms'];
-const supportCommandUsers = ['shikhaliyev_15'];
+const supportCommandUsers = ['shikaliyev_15'];
 
 
 
