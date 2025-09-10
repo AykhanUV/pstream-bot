@@ -151,8 +151,7 @@ Your primary goal is to be a silent, accurate assistant. If in doubt, do not res
 			await targetMessage.channel.sendTyping();
 			await targetMessage.reply({
 				content: finalResponse,
-				allowedMentions: { repliedUser: false },
-				suppressEmbeds: true
+				allowedMentions: { repliedUser: false }
 			});
 			if (targetMessage.channel.isThread()) {
 				respondedThreads.add(targetMessage.channel.id);
