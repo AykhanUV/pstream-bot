@@ -78,5 +78,10 @@
     "topic": "watch_party",
     "question": "Is there a watch together feature?",
     "answer": "Yes, there is a Watch Party feature! You can access it by clicking the settings (cog) icon in the video player and selecting 'Watch Party'."
+  },
+  {
+    "topic": "cia_slow",
+    "question": "The CIA API is lagging or slow, how can I fix it?",
+    "answer": "If the CIA API is lagging, it may be a region-related issue. Try changing your region from https://pstream.mov/admin and then try the CIA API again."
   }
 ]
