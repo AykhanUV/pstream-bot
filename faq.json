@@ -2,7 +2,7 @@
   {
     "topic": "language",
     "question": "The audio isn't in English, can I change it?",
-    "answer": "If you're using the CIA API, it may provide multiple audio languages, and Safari is the browser that best supports switching between them. If the language option isn't available, the best solution is to try a different video source."
+    "answer": "Since P-Stream doesnt control any media, we can't control the audio language. Your best bet is to tap the gear icon on the player and switch sources."
   },
   {
     "topic": "wrong_episode",
@@ -12,12 +12,12 @@
   {
     "topic": "subtitles_sync",
     "question": "My subtitles aren’t in sync, what should I do?",
-    "answer": "You can adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can download synchronized subtitles from opensubtitles or another provider"
+    "answer": "You can adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can drop in your own subtitles."
   },
   {
     "topic": "slow_source",
     "question": "The source I’m using is loading slowly is there a fix?",
-    "answer": "Source speed depends entirely on the hosting site. We recommend using the CIA API, which generally offers faster speeds and a broader selection of content."
+    "answer": "Source speed depends entirely on the hosting site, is to tap the gear icon on the player and switch sources. We recommend using the CIA API, as it is the most recommended."
   },
   {
     "topic": "add_content",
@@ -27,7 +27,7 @@
   {
     "topic": "visual_glitches",
     "question": "I’m experiencing visual glitches with my show/movie, what can I do?",
-    "answer": "Visual bugs are most often caused by a faulty file upload from the provider. Switching to another source may resolve the issue."
+    "answer": "Visual bugs are most often caused by a faulty file upload from the provider. Switching to another source will likely resolve the issue."
   },
   {
     "topic": "video_quality",
@@ -68,11 +68,6 @@
     "topic": "embed_feature",
     "question": "Is there an embed for pstream? How do I use it?",
     "answer": "Yes, Pstream provides an embed link for its content, which allows you to integrate the video player into other websites. You can find the embed link (e.g., embed.pstream.mov) on the content's page."
-  },
-  {
-    "topic": "firefox_extension",
-    "question": "Where is the Firefox extension?",
-    "answer": "The Firefox extension was accidentally deleted, but it will be back soon. You can check for updates in the announcements here: https://discord.com/channels/1267558147682205738/1267573463325868236/1414323558028541972"
   },
   {
     "topic": "watch_party",
