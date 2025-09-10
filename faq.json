@@ -42,7 +42,7 @@
   {
     "topic": "proxy",
     "question": "Why do I need the custom proxy? What does it do?",
-    "answer": "Using the extension or a custom proxy is not about getting more sources, but about improving the stability and speed of the existing ones. It can help reduce buffering and provide a smoother streaming experience."
+    "answer": "Using the a custom proxy will improve the stability and speed of the video. It can help reduce buffering and provide a smoother streaming experience."
   },
   {
     "topic": "extension",
