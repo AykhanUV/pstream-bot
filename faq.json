@@ -40,9 +40,14 @@
     "answer": "Check https://discord.com/channels/1267558147682205738/1385316685850083471 for up to date server information!"
   },
   {
-    "topic": "extension_proxy",
-    "question": "Why do I need the extension or custom proxy?",
-    "answer": "Using the extension or a custom proxy is not about getting more sources, but about improving the stability and speed of the existing ones. It can help reduce buffering and provide a smoother streaming experience. The extension gives more sources, the proxy provides stability."
+    "topic": "proxy",
+    "question": "Why do I need the custom proxy? What does it do?",
+    "answer": "Using the a custom proxy will improve the stability and speed of the video. It can help reduce buffering and provide a smoother streaming experience."
+  },
+  {
+    "topic": "extension",
+    "question": "Why do I need the extension? What does it do?",
+    "answer": "Using the extension unlock variety of new sources, which will improve your watching experience. Read more here: https://discord.com/channels/1267558147682205738/1274812948971389008/1355658009132404907"
   },
   {
     "topic": "febbox_token",
@@ -75,11 +80,6 @@
     "answer": "Yes, P-Stream provides an embed link for its content, which allows you to integrate the video player into other websites. Go to embed.pstream.mov for more information."
   },
   {
-    "topic": "firefox_extension",
-    "question": "Where is the Firefox extension?",
-    "answer": "https://addons.mozilla.org/addon/pstream-extension/"
-  },
-  {
     "topic": "watch_party",
     "question": "Is there a watch together feature?",
     "answer": "Yes, there is a Watch Party feature! You can access it by clicking the settings (cog) icon in the video player and selecting 'Watch Party'."
@@ -89,7 +89,7 @@
     "question": "Why is FED/CIA lagging or slow? How can I fix it?",
     "answer": "FED API or CIA API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at https://pstream.mov/admin and then try again. This often resolves speed issues."
   },
-    {
+  {
     "topic": "app",
     "question": "Does P-Stream have an app?",
     "answer": "Not yet, but you can install it as a PWA (Progressive Web App). On iOS, use Safari → Share → Add to Home Screen. On Android, use Chrome → 3 dots → Add to Home Screen."
