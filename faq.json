@@ -2,77 +2,82 @@
   {
     "topic": "language",
     "question": "The audio isn't in English, can I change it?",
-    "answer": "Since P-Stream doesnt control any media, we can't control the audio language. Your best bet is to tap the gear icon on the player and switch sources."
+    "answer": "P-Stream doesn't control any media, some sources may be in the wrong language. Tap the settings cog at the bottom of the player to see stream options. If another audio option isn't avaliable, then select 'video sources' and change the source."
   },
   {
     "topic": "wrong_episode",
     "question": "The episode I’m watching is incorrect, how do I fix it?",
-    "answer": "If the wrong episode is displayed, please switch the video source by clicking the settings (cog) at the bottom of the player and selecting “video sources.” Note that content is automatically scraped from various sites, so we don’t control the accuracy. The content provided is not controlled by P-stream."
+    "answer": "If the wrong episode is displayed, please switch the video source by clicking the settings cog at the bottom of the player and selecting 'video sources'. Note that content is automatically scraped from various sites, so we don’t control the accuracy. The content provided is not controlled by P-Stream."
   },
   {
     "topic": "subtitles_sync",
     "question": "My subtitles aren’t in sync, what should I do?",
-    "answer": "You can adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can drop in your own subtitles."
+    "answer": "First, select the external subtitles option and try a different subtitle file. If none are correct, you can adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can upload a .srt subtitle file to be used."
   },
   {
     "topic": "slow_source",
     "question": "The source I’m using is loading slowly is there a fix?",
-    "answer": "Source speed depends entirely on the hosting site, is to tap the gear icon on the player and switch sources. We recommend using the CIA API, as it is the most recommended."
+    "answer": "Source speed depends entirely on the hosting site. We recommend setting up Febbox, which generally offers faster speeds and a broader selection of content. Setup guide here: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
   },
   {
     "topic": "add_content",
     "question": "Can you add a specific episode or movie?",
-    "answer": "Yes, you can request for a movie or show to be added! Please make a request in the media request channel here: https://discord.com/channels/1267558147682205738/1359951538201694379"
+    "answer": "Please make a request in the media request channel here: https://discord.com/channels/1267558147682205738/1359951538201694379"
   },
   {
     "topic": "visual_glitches",
     "question": "I’m experiencing visual glitches with my show/movie, what can I do?",
-    "answer": "Visual bugs are most often caused by a faulty file upload from the provider. Switching to another source will likely resolve the issue."
+    "answer": "Visual bugs are most often caused by a faulty file upload from the provider. Switching to another source may resolve the issue."
   },
   {
     "topic": "video_quality",
     "question": "The video quality isn’t what I expected, can I get a better version?",
-    "answer": "Different sources offer varying quality levels. Try changing sources; the CIA API typically provides the widest range of quality options."
+    "answer": "Different sources offer varying quality levels. Try changing sources; FED API and CIA API typically provides the widest range of quality options. You'll need to set up Febbox: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
   },
   {
     "topic": "fedapi_status",
-    "question": "What is the status of Fed-Api?",
-    "answer": "Fed-Api is temporarily disabled while we secure a better server for it. In the meantime, we highly recommend using the CIA API for a stable and high-quality experience."
+    "question": "What is the status of FED-API?",
+    "answer": "Check https://discord.com/channels/1267558147682205738/1385316685850083471 for up to date server information!"
   },
   {
-    "topic": "proxy",
-    "question": "Why do I need the custom proxy? What does it do?",
-    "answer": "Using the a custom proxy will improve the stability and speed of the video. It can help reduce buffering and provide a smoother streaming experience."
-  },
-  {
-    "topic": "extension",
-    "question": "Why do I need the extension? What does it do?",
-    "answer": "Using the extension unlock variety of new sources, which will improve your watching experience. Read more here: https://discord.com/channels/1267558147682205738/1274812948971389008/1355658009132404907"
+    "topic": "extension_proxy",
+    "question": "Why do I need the extension or custom proxy?",
+    "answer": "Using the extension or a custom proxy is not about getting more sources, but about improving the stability and speed of the existing ones. It can help reduce buffering and provide a smoother streaming experience. The extension gives more sources, the proxy provides stability."
   },
   {
     "topic": "febbox_token",
     "question": "My febbox token fails during setup, what should I do?",
-    "answer": "If your Febbox token fails, first try setting up a custom DNS 1.1.1.1 or nextdns, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
+    "answer": "If your Febbox token fails, first try setting up a custom DNS 1.1.1.1 or NextDNS, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
   },
   {
     "topic": "febbox/fedapi_setup",
-    "question": "How can I setup fedapi/febbox token?",
+    "question": "How can I setup FED API/Febbox token?",
     "answer": "You can find a detailed guide here https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+  },
+  {
+    "topic": "what_febbox",
+    "question": "What is FED API?",
+    "answer": "FED API is our private scraper that pulls streams directly from Febbox. Each free Febbox account includes 100 GB/month of unlimited bandwidth, and we use your UI token to scrape content as if you're watching it yourself. Setup is easiest via desktop browser, but mobile instructions are available on our Discord."
   },
   {
     "topic": "extension_safe",
     "question": "Is the extension safe?",
-    "answer": "Yes, the extension is safe. You can view the source code here: https://github.com/p-stream/extension"
+    "answer": "Yes, the extension is safe. Read about it here: https://rentry.co/htagcrv4 or view the source code: https://github.com/p-stream/extension"
   },
   {
     "topic": "open_source",
     "question": "Is pstream open source?",
-    "answer": "Yes, pstream is open source. You can find the repository here: https://github.com/p-stream/p-stream"
+    "answer": "Yes, P-Stream is open source. You can find the repository here: https://github.com/p-stream/p-stream"
   },
   {
     "topic": "embed_feature",
     "question": "Is there an embed for pstream? How do I use it?",
-    "answer": "Yes, Pstream provides an embed link for its content, which allows you to integrate the video player into other websites. You can find the embed link (e.g., embed.pstream.mov) on the content's page."
+    "answer": "Yes, P-Stream provides an embed link for its content, which allows you to integrate the video player into other websites. Go to embed.pstream.mov for more information."
+  },
+  {
+    "topic": "firefox_extension",
+    "question": "Where is the Firefox extension?",
+    "answer": "https://addons.mozilla.org/addon/pstream-extension/"
   },
   {
     "topic": "watch_party",
@@ -80,8 +85,23 @@
     "answer": "Yes, there is a Watch Party feature! You can access it by clicking the settings (cog) icon in the video player and selecting 'Watch Party'."
   },
   {
-    "topic": "cia_slow",
-    "question": "Why is the CIA API lagging or slow? How can I fix it?",
-    "answer": "The CIA API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at https://pstream.mov/admin and then try the CIA API again. This often resolves speed issues."
+    "topic": "febbox_slow",
+    "question": "Why is FED/CIA lagging or slow? How can I fix it?",
+    "answer": "FED API or CIA API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at https://pstream.mov/admin and then try again. This often resolves speed issues."
+  },
+    {
+    "topic": "app",
+    "question": "Does P-Stream have an app?",
+    "answer": "Not yet, but you can install it as a PWA (Progressive Web App). On iOS, use Safari → Share → Add to Home Screen. On Android, use Chrome → 3 dots → Add to Home Screen."
+  },
+  {
+    "topic": "account",
+    "question": "How do I make an account?",
+    "answer": "Tap 'Sync to Cloud' in the dropdown menu or go to Settings to create and sync a community account."
+  },
+  {
+    "topic": "download_forbidden",
+    "question": "When I try do download, it says forbidden",
+    "answer": "xprime sources cannot be downloaded from for security reasons. Switch to another source and try again. FED API and CIA API are the best to download from!"
   }
 ]
