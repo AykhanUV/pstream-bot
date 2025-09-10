@@ -50,9 +50,9 @@
     "answer": "If your Febbox token fails, first try setting up a custom DNS 1.1.1.1 or nextdns, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
   },
   {
-    "topic": "cia_api_setup",
-    "question": "How can I set up the CIA API?",
-    "answer": "You can find a detailed guide for setting up the API here: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+    "topic": "febbox/fedapi_setup",
+    "question": "How can I setup fedapi/febbox token?",
+    "answer": "You can find a detailed guide here https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
   },
   {
     "topic": "extension_safe",
