@@ -130,7 +130,7 @@ Your primary goal is to be a silent, accurate assistant. If in doubt, do not res
 		console.log(`Sending generation request for message: "${userMessage}"`);
 		const response = await axios.post(`${aiWrapperUrl}/v1beta/models/${aiModelName}:generateContent`, requestBody, {
 			headers: { 'Content-Type': 'application/json' },
-			timeout: 40000 
+			timeout: 30000 
 		});
 
 		let aiResponseText = '';
