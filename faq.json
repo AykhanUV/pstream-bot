@@ -81,7 +81,7 @@
   },
   {
     "topic": "cia_slow",
-    "question": "The CIA API is lagging or slow, how can I fix it?",
-    "answer": "If the CIA API is lagging, it may be a region-related issue. Try changing your region from https://pstream.mov/admin and then try the CIA API again."
+    "question": "Why is the CIA API lagging or slow? How can I fix it?",
+    "answer": "The CIA API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at https://pstream.mov/admin and then try the CIA API again. This often resolves speed issues."
   }
 ]
