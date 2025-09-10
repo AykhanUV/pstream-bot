@@ -1,8 +1,8 @@
 [
   {
     "topic": "language",
-    "question": "Fed-Api isn’t in English, can I change it?",
-    "answer": "If you're using Fed-Api, it often provides multiple audio languages, and Safari is the browser that best supports switching between them. If you're not using Fed-Api or the language option isn't available, the best solution is to try a different video source."
+    "question": "The audio isn't in English, can I change it?",
+    "answer": "If you're using the CIA API, it may provide multiple audio languages, and Safari is the browser that best supports switching between them. If the language option isn't available, the best solution is to try a different video source."
   },
   {
     "topic": "wrong_episode",
@@ -17,7 +17,7 @@
   {
     "topic": "slow_source",
     "question": "The source I’m using is loading slowly is there a fix?",
-    "answer": "Source speed depends entirely on the hosting site. We recommend using Fed-Api, which generally offers faster speeds and a broader selection of content."
+    "answer": "Source speed depends entirely on the hosting site. We recommend using the CIA API, which generally offers faster speeds and a broader selection of content."
   },
   {
     "topic": "add_content",
@@ -32,12 +32,12 @@
   {
     "topic": "video_quality",
     "question": "The video quality isn’t what I expected, can I get a better version?",
-    "answer": "Different sources offer varying quality levels. Try changing sources; Fed-Api typically provides the widest range of quality options."
+    "answer": "Different sources offer varying quality levels. Try changing sources; the CIA API typically provides the widest range of quality options."
   },
   {
-    "topic": "fedapi_devices",
-    "question": "Does Fed-Api work on all devices? How do I set it up?",
-    "answer": "Yes, Fed-Api is compatible with all devices."
+    "topic": "fedapi_status",
+    "question": "What is the status of Fed-Api?",
+    "answer": "Fed-Api is temporarily disabled while we secure a better server for it. In the meantime, we highly recommend using the CIA API for a stable and high-quality experience."
   },
   {
     "topic": "extension_proxy",
