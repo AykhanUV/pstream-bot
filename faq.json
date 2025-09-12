@@ -71,12 +71,12 @@
   },
   {
     "topic": "open_source",
-    "question": "Is pstream open source?",
+    "question": "Is P-Stream open source?",
     "answer": "Yes, P-Stream is open source. You can find the repository here: https://github.com/p-stream/p-stream"
   },
   {
     "topic": "embed_feature",
-    "question": "Is there an embed for pstream? How do I use it?",
+    "question": "Is there an embed for P-Stream? How do I use it?",
     "answer": "Yes, P-Stream provides an embed link for its content, which allows you to integrate the video player into other websites. Go to embed.pstream.mov for more information."
   },
   {
