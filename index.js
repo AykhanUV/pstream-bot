@@ -134,6 +134,25 @@ client.on(Events.MessageCreate, async message => {
 		return;
 	}
 
+	   // New feature: "answer him/her/them"
+	   const answerCommand = /\b(answer (him|her|them))\b/i;
+	   if (message.reference && message.mentions.has(client.user.id) && answerCommand.test(message.content)) {
+	       try {
+	           const helperMessage = message; // Store the original message from the helper
+	           // The message we want to process is the one being replied to.
+	           const targetMessage = await message.channel.messages.fetch(message.reference.messageId);
+	           
+	           // Acknowledge the helper's command on the helper's message
+	           await helperMessage.react('👍');
+	   
+	           // Overwrite the 'message' object with the target message.
+	           // The rest of the script will now use this as the context for processing and replying.
+	           message = targetMessage;
+	       } catch (error) {
+	           console.error("Error fetching message for 'answer him' command:", error);
+	           return; // Stop processing if we can't get the context right.
+	       }
+	   }
 	
 	if (!aiWrapperUrl || !aiModelName) {
 		return;
