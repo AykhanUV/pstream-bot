@@ -103,8 +103,5 @@
     "topic": "download_forbidden",
     "question": "When I try do download, it says forbidden",
     "answer": "xprime sources cannot be downloaded from for security reasons. Switch to another source and try again. FED API and CIA API are the best to download from!"
-  },
-  {
-    "note": "NOTE: CIA API is down, so do not recommend that yet, and if the user asks for help about it not working, reply accordingly."
   }
 ]
