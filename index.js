@@ -176,14 +176,23 @@ client.on(Events.MessageCreate, async message => {
 
 	// Fetch last 50 messages for context
 	const messageHistory = await message.channel.messages.fetch({ limit: 50 });
-	const historyString = messageHistory.reverse().map(m => {
+	const historyString = (await Promise.all(messageHistory.reverse().map(async m => {
 		let content = `${m.author.username}: ${m.content}`;
+	
+		// Add reply context
+		if (m.reference && m.reference.messageId) {
+			const repliedTo = await m.channel.messages.fetch(m.reference.messageId).catch(() => null);
+			if (repliedTo) {
+				content = `${m.author.username} (replying to ${repliedTo.author.username}): ${m.content}`;
+			}
+		}
+	
 		if (m.embeds.length > 0) {
 			const embed = m.embeds[0];
 			content += ` [Embed Content: Title: ${embed.title}, Description: ${embed.description}]`;
 		}
 		return content;
-	}).join('\n');
+	}))).join('\n');
 
 	const prompt = `You are the official Pstream Support bot. Your responses MUST be short, concise, and directly to the point. Avoid conversational filler.
 
@@ -200,19 +209,22 @@ ${faqStringForPrompt}
 The user's latest message is: "${userMessage}"
 
 Follow these instructions precisely:
-1.  **Advanced Social Context Check (VERY IMPORTANT):** Review the last 5 messages in the CHAT HISTORY. Has another user (not the original poster) replied to the person asking for help within the last 2-3 messages? If so, a support conversation is already in progress. In this case, you MUST NOT respond unless you are explicitly mentioned by name (@P-stream support or @1366455600925511770). Your goal is to avoid interrupting a human who is already helping. If a helper is actively engaged, respond with [IGNORE]. But if during the helping proccess, someone pings you, you must answer, they might be lazy to respond and want your help, like someone asking how to switch sources and someone pings you to answer, answer the person who asked.
+1.  **Advanced Social Context Check (VERY IMPORTANT):** The chat history now includes reply context, like "UserA (replying to UserB): message".
+	   *   **Human-to-Human Conversation:** If the latest message shows a user replying to another user (who is not you, the bot), it means a conversation is in progress. You MUST NOT respond. Your goal is to avoid interrupting a human who is already helping. In this case, respond with [IGNORE].
+	   *   **Exception - Bot Mentioned:** If you are explicitly mentioned in a reply (e.g., "@P-stream support or @1366455600925511770"), you MUST respond, as you are being directly asked for help.
+	   *   **Replying to the Bot:** If the user is replying to you, you should always process the message.
 2.  **Confidence Check:** Is the user's question directly and confidently answered by the FAQ? If not, you MUST respond with [IGNORE]. Do not guess or make up answers about topics not in the FAQ.
-3.  **Relevance Check:** Only mention a specific solution (like 'CIA API') if the user's problem is directly related to it (e.g., slow streaming). Do not offer unsolicited advice.
+3.  **Relevance Check:** Only mention a specific solution (like 'FED API') if the user's problem is directly related to it (e.g., slow streaming). Do not offer unsolicited advice.
 4.  **Analyze Intent:** Is the user asking a genuine support question about pstream?
-    *   **Forum Post Exception:** If the message is a forum post (Title + Body) and the body is short (e.g., "title says it all"), the Title is the user's question.
-    *   If the message is not a clear support question about pstream, respond with [IGNORE].
+	   *   **Forum Post Exception:** If the message is a forum post (Title + Body) and the body is short (e.g., "title says it all"), the Title is the user's question.
+	   *   If the message is not a clear support question about pstream, respond with [IGNORE].
 5.  **Answering:** If the question passes all checks, provide a concise answer based on the FAQ.
-    *   **Safety:** For "is pstream safe?", respond with: "Yes, it is safe. The source code is available on GitHub: https://github.com/p-stream/p-stream"
-    *   **Video/Audio Issues:** This is a two-step process.
-        1.  **First-time request:** If the user reports a video/audio issue and you have NOT previously suggested switching sources in the recent history, your response should be: "The primary solution is to switch the video source, as P-stream does not control the media files scraped from providers."
-        2.  **Follow-up request:** If the user's message indicates the first solution didn't work (e.g., "did not work," "what else can I do?"), and you have ALREADY suggested switching sources, your response should be: "If switching sources doesn't help, you can unlock more stable sources by downloading the browser extension or using the CIA API."
-    *   **Website Lag:** For website lag, suggest checking their internet, clearing cache, or enabling 'Low Performance Mode'.
-    *   **Other FAQ Topics:** Answer directly from the FAQ.
+	   *   **Safety:** For "is pstream safe?", respond with: "Yes, it is safe. The source code is available on GitHub: https://github.com/p-stream/p-stream"
+	   *   **Video/Audio Issues:** This is a two-step process.
+	       1.  **First-time request:** If the user reports a video/audio issue and you have NOT previously suggested switching sources in the recent history, your response should be: "The primary solution is to switch the video source, as P-stream does not control the media files scraped from providers."
+	       2.  **Follow-up request:** If the user's message indicates the first solution didn't work (e.g., "did not work," "what else can I do?"), and you have ALREADY suggested switching sources, your response should be: "If switching sources doesn't help, you can unlock more stable sources by downloading the browser extension or using the CIA API."
+	   *   **Website Lag:** For website lag, suggest checking their internet, clearing cache, or enabling 'Low Performance Mode'.
+	   *   **Other FAQ Topics:** Answer directly from the FAQ.
 
 Your primary goal is to be a silent, accurate assistant. If in doubt, do not respond.`;
 	   
