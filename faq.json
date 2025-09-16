@@ -32,12 +32,17 @@
   {
     "topic": "video_quality",
     "question": "The video quality isn’t what I expected, can I get a better version?",
-    "answer": "Different sources offer varying quality levels. Try changing sources; FED API and CIA API typically provides the widest range of quality options. You'll need to set up Febbox: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+    "answer": "Different sources offer varying quality levels. Try changing sources; the FED API typically provides the widest range of quality options. You'll need to set up Febbox: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
   },
   {
     "topic": "fedapi_status",
     "question": "What is the status of FED-API?",
     "answer": "Check https://discord.com/channels/1267558147682205738/1385316685850083471 for up to date server information!"
+  },
+  {
+    "topic": "cia_api_status",
+    "question": "What is the status of CIA API?",
+    "answer": "The CIA API is currently down. We recommend using the FED API instead, which is more stable and offers a wider range of content."
   },
   {
     "topic": "proxy",
@@ -86,8 +91,8 @@
   },
   {
     "topic": "febbox_slow",
-    "question": "Why is FED/CIA lagging or slow? How can I fix it?",
-    "answer": "FED API or CIA API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at https://pstream.mov/admin and then try again. This often resolves speed issues."
+    "question": "Why is FED API lagging or slow? How can I fix it?",
+    "answer": "The FED API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at https://pstream.mov/admin and then try again. This often resolves speed issues."
   },
   {
     "topic": "app",
@@ -102,6 +107,6 @@
   {
     "topic": "download_forbidden",
     "question": "When I try do download, it says forbidden",
-    "answer": "xprime sources cannot be downloaded from for security reasons. Switch to another source and try again. FED API and CIA API are the best to download from!"
+    "answer": "Xprime sources cannot be downloaded from for security reasons. Switch to another source and try again. The FED API is the best to download from!"
   }
 ]
