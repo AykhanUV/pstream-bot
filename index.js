@@ -1,8 +1,7 @@
-
 const fs = require('node:fs');
 const path = require('node:path');
 const axios = require('axios'); 
-const { Client, Events, GatewayIntentBits, Collection, MessageFlags, ChannelType } = require('discord.js');
+const { Client, Events, GatewayIntentBits, Collection, MessageFlags, ChannelType, AttachmentBuilder } = require('discord.js');
 const { token, aiWrapperUrl, aiModelName } = require('./config.json'); 
 
 
@@ -171,8 +170,30 @@ client.on(Events.MessageCreate, async message => {
 		let embedContent = `[Embed Content: Title: ${embed.title}, Description: ${embed.description}]`;
 		userMessage = `${userMessage}\n${embedContent}`;
 	}
+
+	// Image analysis
+	let imageParts = [];
+	if (message.attachments.size > 0) {
+		for (const attachment of message.attachments.values()) {
+			if (attachment.contentType && attachment.contentType.startsWith('image/')) {
+				try {
+					const response = await axios.get(attachment.url, { responseType: 'arraybuffer' });
+					const buffer = Buffer.from(response.data, 'binary');
+					imageParts.push({
+						inline_data: {
+							mime_type: attachment.contentType,
+							data: buffer.toString('base64')
+						}
+					});
+				} catch (error) {
+					console.error('Error fetching or processing image attachment:', error);
+				}
+			}
+		}
+	}
 	
-	if (!userMessage || userMessage.length < 3) return;
+	if (!userMessage && imageParts.length === 0) return;
+	if (userMessage.length < 3 && imageParts.length === 0) return;
 
 	// Fetch last 50 messages for context
 	const messageHistory = await message.channel.messages.fetch({ limit: 50 });
@@ -207,13 +228,14 @@ ${faqStringForPrompt}
 --- FAQ END ---
 
 The user's latest message is: "${userMessage}"
+If the message includes an image, analyze it for extra context. For example, greyed-out sources in a screenshot mean the browser extension is required.
 
 Follow these instructions precisely:
 1.  **Advanced Social Context Check (VERY IMPORTANT):** The chat history now includes reply context, like "UserA (replying to UserB): message".
 	   *   **Human-to-Human Conversation:** If the latest message shows a user replying to another user (who is not you, the bot), it means a conversation is in progress. You MUST NOT respond. Your goal is to avoid interrupting a human who is already helping. In this case, respond with [IGNORE].
-	   *   **Exception - Bot Mentioned:** If you are explicitly mentioned in a reply (e.g., "@P-stream support or @1366455600925511770"), you MUST respond, as you are being directly asked for help.
+	   *   **Exception - Bot Mentioned:** If you are explicitly mentioned in a reply (e.g., "@P-stream support or @1366455600925511770"), you MUST respond. Synthesize information from the FAQ to be as helpful as possible, even if it's not a direct match.
 	   *   **Replying to the Bot:** If the user is replying to you, you should always process the message.
-2.  **Confidence Check:** Is the user's question directly and confidently answered by the FAQ? If not, you MUST respond with [IGNORE]. Do not guess or make up answers about topics not in the FAQ.
+2.  **Confidence Check (Flexible):** Is the user's question (from text or image) **relevant** to the FAQ? If a clear connection can be made (e.g., "forbidden" and "download" relates to 'download_forbidden'), you should answer. If not, respond with [IGNORE]. Do not guess.
 3.  **Relevance Check:** Only mention a specific solution (like 'FED API') if the user's problem is directly related to it (e.g., slow streaming). Do not offer unsolicited advice.
 4.  **Analyze Intent:** Is the user asking a genuine support question about pstream?
 	   *   **Forum Post Exception:** If the message is a forum post (Title + Body) and the body is short (e.g., "title says it all"), the Title is the user's question.
@@ -232,7 +254,7 @@ Your primary goal is to be a silent, accurate assistant. If in doubt, do not res
 	
 	const requestBody = {
 		contents: [{
-			parts: [{ text: prompt }]
+			parts: [{ text: prompt }, ...imageParts]
 		}],
 		safetySettings: [
 			{
@@ -307,7 +329,6 @@ Your primary goal is to be a silent, accurate assistant. If in doubt, do not res
 		
 	}
 });
-
 
 
 

@@ -106,7 +106,7 @@
   },
   {
     "topic": "download_forbidden",
-    "question": "When I try do download, it says forbidden",
+    "question": "When I try to download content, it says forbidden or it fails",
     "answer": "Xprime sources cannot be downloaded from for security reasons. Switch to another source and try again. The FED API is the best to download from!"
   }
 ]
