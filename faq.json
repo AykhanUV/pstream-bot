@@ -109,4 +109,9 @@
     "question": "When I try to download content, it says forbidden or it fails",
     "answer": "Xprime sources cannot be downloaded from for security reasons. Switch to another source and try again. The FED API is the best to download from!"
   }
+  {
+    "topic": "downloading_content",
+    "question": "Is it possible to download content?",
+    "answer": "Yes, you can download movies/shows by clicking the settings cog at the bottom of the player and selecting 'Download' option"
+  }
 ]
