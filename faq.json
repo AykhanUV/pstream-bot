@@ -55,6 +55,11 @@
     "answer": "Using the extension unlock variety of new sources, which will improve your watching experience. Read more here: https://discord.com/channels/1267558147682205738/1274812948971389008/1355658009132404907"
   },
   {
+    "topic": "extension_download",
+    "question": "How can I download the extension? Where can I get it?",
+    "answer": "You can go to https://pstream.mov/onboarding to install the correct extension for your browser and test it"
+  },
+  {
     "topic": "febbox_token",
     "question": "My febbox token fails during setup, what should I do?",
     "answer": "If your Febbox token fails, first try setting up a custom DNS 1.1.1.1 or NextDNS, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
@@ -108,10 +113,10 @@
     "topic": "download_forbidden",
     "question": "When I try to download content, it says forbidden or it fails",
     "answer": "Xprime sources cannot be downloaded from for security reasons. Switch to another source and try again. The FED API is the best to download from!"
-  }
+  },
   {
     "topic": "downloading_content",
     "question": "Is it possible to download content?",
-    "answer": "Yes, you can download movies/shows by clicking the settings cog at the bottom of the player and selecting Download option"
+    "answer": "Yes, you can download movies/shows by clicking the settings cog at the bottom of the player and selecting 'Download' option"
   }
 ]
