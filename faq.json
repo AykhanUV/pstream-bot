@@ -17,12 +17,12 @@
   {
     "topic": "slow_source",
     "question": "The source I’m using is loading slowly is there a fix?",
-    "answer": "Source speed depends entirely on the hosting site. We recommend setting up Febbox, which generally offers faster speeds and a broader selection of content. Setup guide here: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+    "answer": "Source speed depends entirely on the hosting site. We recommend setting up Febbox, which generally offers faster speeds and a broader selection of content. Setup guide here: <https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855>"
   },
   {
     "topic": "add_content",
     "question": "Can you add a specific episode or movie?",
-    "answer": "Please make a request in the media request channel here: https://discord.com/channels/1267558147682205738/1359951538201694379"
+    "answer": "Please make a request in the media request channel here: <https://discord.com/channels/1267558147682205738/1359951538201694379>"
   },
   {
     "topic": "visual_glitches",
@@ -32,12 +32,12 @@
   {
     "topic": "video_quality",
     "question": "The video quality isn’t what I expected, can I get a better version?",
-    "answer": "Different sources offer varying quality levels. Try changing sources; the FED API typically provides the widest range of quality options. You'll need to set up Febbox: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+    "answer": "Different sources offer varying quality levels. Try changing sources; the FED API typically provides the widest range of quality options. You'll need to set up Febbox: <https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855>"
   },
   {
     "topic": "fedapi_status",
     "question": "What is the status of FED-API?",
-    "answer": "Check https://discord.com/channels/1267558147682205738/1385316685850083471 for up to date server information!"
+    "answer": "Check <https://discord.com/channels/1267558147682205738/1385316685850083471> for up to date server information!"
   },
   {
     "topic": "cia_api_status",
@@ -52,12 +52,12 @@
   {
     "topic": "extension",
     "question": "Why do I need the extension? What does it do?",
-    "answer": "Using the extension unlock variety of new sources, which will improve your watching experience. Read more here: https://discord.com/channels/1267558147682205738/1274812948971389008/1355658009132404907"
+    "answer": "Using the extension unlock variety of new sources, which will improve your watching experience. Read more here: <https://discord.com/channels/1267558147682205738/1274812948971389008/1355658009132404907>"
   },
   {
     "topic": "extension_download",
     "question": "How can I download the extension? Where can I get it?",
-    "answer": "You can go to https://pstream.mov/onboarding to install the correct extension for your browser and test it"
+    "answer": "You can go to <https://pstream.mov/onboarding> to install the correct extension for your browser and test it"
   },
   {
     "topic": "febbox_token",
@@ -67,7 +67,7 @@
   {
     "topic": "febbox/fedapi_setup",
     "question": "How can I setup FED API/Febbox token?",
-    "answer": "You can find a detailed guide here https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+    "answer": "You can find a detailed guide here <https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855>"
   },
   {
     "topic": "what_febbox",
@@ -77,17 +77,17 @@
   {
     "topic": "extension_safe",
     "question": "Is the extension safe?",
-    "answer": "Yes, the extension is safe. Read about it here: https://rentry.co/htagcrv4 or view the source code: https://github.com/p-stream/extension"
+    "answer": "Yes, the extension is safe. Read about it here: <https://rentry.co/htagcrv4> or view the source code: <https://github.com/p-stream/extension>"
   },
   {
     "topic": "open_source",
     "question": "Is P-Stream open source?",
-    "answer": "Yes, P-Stream is open source. You can find the repository here: https://github.com/p-stream/p-stream"
+    "answer": "Yes, P-Stream is open source. You can find the repository here: <https://github.com/p-stream/p-stream>"
   },
   {
     "topic": "embed_feature",
     "question": "Is there an embed for P-Stream? How do I use it?",
-    "answer": "Yes, P-Stream provides an embed link for its content, which allows you to integrate the video player into other websites. Go to embed.pstream.mov for more information."
+    "answer": "Yes, P-Stream provides an embed link for its content, which allows you to integrate the video player into other websites. Go to <https://embed.pstream.mov> for more information."
   },
   {
     "topic": "watch_party",
@@ -97,7 +97,7 @@
   {
     "topic": "febbox_slow",
     "question": "Why is FED API lagging or slow? How can I fix it?",
-    "answer": "The FED API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at https://pstream.mov/admin and then try again. This often resolves speed issues."
+    "answer": "The FED API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at <https://pstream.mov/admin> and then try again. This often resolves speed issues."
   },
   {
     "topic": "app",
