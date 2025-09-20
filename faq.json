@@ -118,5 +118,10 @@
     "topic": "downloading_content",
     "question": "Is it possible to download content?",
     "answer": "Yes, you can download movies/shows by clicking the settings cog at the bottom of the player and selecting 'Download' option"
+  },
+  {
+    "topic": "tmdb_issue",
+    "question": "Site loading issues and TMDB test failures",
+    "answer": "Site loading issues and TMDB test failures often stem from external API connectivity, local network, or DNS. If their ISP might be blocking, advise users to change DNS or set up custom proxy and turn on TMDB proxying there."
   }
 ]
