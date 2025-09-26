@@ -75,7 +75,6 @@ class BotCache {
             threadsArray.slice(-50).forEach(id => this.respondedThreads.add(id));
         }
 
-        // messageCache cleanup removed - was unused
         console.log('Cache cleanup completed');
     }
 
@@ -199,7 +198,7 @@ class AIService {
 
         const apiUrl = `${this.config.aiWrapperUrl}/v1beta/models/${this.config.aiModelName}:generateContent`;
 
-        // Light retry on transient failures
+        // Light retry  failures
         const maxAttempts = 3;
         let lastErr;
         for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -480,7 +479,7 @@ class MessageHandler {
                 limit: BotConstants.MESSAGE_HISTORY_LIMIT 
             });
 
-            // Build a local index to resolve reply targets without extra fetches
+            // Build a local index to resolve reply targets
             const ordered = Array.from(messages.values()).reverse();
             const index = new Map(ordered.map(m => [m.id, m]));
 
@@ -589,7 +588,7 @@ class PStreamBot {
             console.error('Discord shard error:', error);
         });
 
-        // Observe REST rate limits in v14
+        // V14 docs
         this.client.rest.on('rateLimited', (info) => {
             console.warn('Discord REST rate-limited', {
                 route: info.route,
