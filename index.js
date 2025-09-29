@@ -215,20 +215,12 @@ client.on(Events.MessageCreate, async message => {
 		return content;
 	}))).join('\n');
 
-	const prompt = `You are the official Pstream Support bot. Your responses MUST be short, concise, and directly to the point. Avoid conversational filler.
-
-Here is the recent chat history for the channel #${message.channel.name}. Use this to understand the current conversation's context:
---- CHAT HISTORY START ---
-${historyString}
---- CHAT HISTORY END ---
+	const systemPrompt = `You are the official Pstream Support bot. Your responses MUST be short, concise, and directly to the point. Avoid conversational filler.
 
 Here is your knowledge base (FAQ):
 --- FAQ START ---
 ${faqStringForPrompt}
 --- FAQ END ---
-
-The user's latest message is: "${userMessage}"
-If the message includes an image, analyze it for extra context. For example, greyed-out sources in a screenshot mean the browser extension is required.
 
 Follow these instructions precisely:
 1.  **Advanced Social Context Check (VERY IMPORTANT):** The chat history now includes reply context, like "UserA (replying to UserB): message".
@@ -244,17 +236,28 @@ Follow these instructions precisely:
 	   *   **Safety:** For "is pstream safe?", respond with: "Yes, it is safe. The source code is available on GitHub: <https://github.com/p-stream/p-stream>"
 	   *   **Video/Audio Issues:** This is a two-step process.
 	       1.  **First-time request:** If the user reports a video/audio issue and you have NOT previously suggested switching sources in the recent history, your response should be: "The primary solution is to switch the video source, as P-stream does not control the media files scraped from providers."
-	       2.  **Follow-up request:** If the user's message indicates the first solution didn't work (e.g., "did not work," "what else can I do?"), and you have ALREADY suggested switching sources, your response should be: "If switching sources doesn't help, you can unlock more stable sources by downloading the browser extension or using the CIA API."
+	       2.  **Follow-up request:** If the user's message indicates the first solution's ailed (e.g., "did not work," "what else can I do?"), and you have ALREADY suggested switching sources, your response should be: "If switching sources doesn't help, you can unlock more stable sources by downloading the browser extension or using the CIA API."
 	   *   **Website Lag:** For website lag, suggest checking their internet, clearing cache, or enabling 'Low Performance Mode'.
 	   *   **Other FAQ Topics:** Answer directly from the FAQ.
 
 Your primary goal is to be a silent, accurate assistant. If in doubt, do not respond.`;
-	   
 
-	
+	const userPrompt = `Here is the recent chat history for the channel #${message.channel.name}. Use this to understand the current conversation's context:
+--- CHAT HISTORY START ---
+${historyString}
+--- CHAT HISTORY END ---
+
+The user's latest message is: "${userMessage}"
+If the message includes an image, analyze it for extra context. For example, greyed-out sources in a screenshot mean the browser extension is required.`;
+
+
 	const requestBody = {
+		system_instruction: {
+			parts: [{ text: systemPrompt }]
+		},
 		contents: [{
-			parts: [{ text: prompt }, ...imageParts]
+			role: 'user',
+			parts: [{ text: userPrompt }, ...imageParts]
 		}],
 		safetySettings: [
 			{
