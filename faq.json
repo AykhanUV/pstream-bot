@@ -32,10 +32,10 @@
   {
     "topic": "video_quality",
     "question": "The video quality isn’t what I expected, can I get a better version?",
-    "answer": "Different sources offer varying quality levels. Try changing sources; the Fembox/FemAPI (formerly Febbox/FED API) typically provides the widest range of quality options. You'll need to set up Febbox: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
+    "answer": "Different sources offer varying quality levels. Try changing sources; the FED API typically provides the widest range of quality options. You'll need to set up Febbox: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
   },
   {
-    "topic": "Fembox/FemAPI (formerly Febbox/FED API)_status",
+    "topic": "fedapi_status",
     "question": "What is the status of FED-API?",
     "answer": "Check https://discord.com/channels/1267558147682205738/1385316685850083471 for up to date server information!"
   },
@@ -96,8 +96,8 @@
   },
   {
     "topic": "febbox_slow",
-    "question": "Why is Fembox/FemAPI (formerly Febbox/FED API) lagging or slow? How can I fix it?",
-    "answer": "The Fembox/FemAPI (formerly Febbox/FED API)'s speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at <https://pstream.mov/admin> and then try again. This often resolves speed issues."
+    "question": "Why is FED API lagging or slow? How can I fix it?",
+    "answer": "The FED API's speed can sometimes be affected by your geographical region. The best solution is to try changing your region in the admin settings at <https://pstream.mov/admin> and then try again. This often resolves speed issues."
   },
   {
     "topic": "app",
@@ -120,8 +120,8 @@
     "answer": "Yes, you can download movies/shows by clicking the settings cog at the bottom of the player and selecting 'Download' option"
   },
   {
-    "topic": "femboyDB/TMDB_issue",
-    "question": "Site loading issues and femboyDB/TMDB test failures",
-    "answer": "Site loading issues and femboyDB/TMDB test failures often stem from external API connectivity, local network, or DNS. If their ISP might be blocking, advise users to change DNS or set up custom proxy and turn on TMDB proxying there."
+    "topic": "tmdb_issue",
+    "question": "Site loading issues and TMDB test failures",
+    "answer": "Site loading issues and TMDB test failures often stem from external API connectivity, local network, or DNS. If their ISP might be blocking, advise users to change DNS or set up custom proxy and turn on TMDB proxying there."
   }
 ]
