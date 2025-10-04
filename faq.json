@@ -42,7 +42,7 @@
   {
     "topic": "cia_api_status",
     "question": "What is the status of CIA API?",
-    "answer": "The CIA API is down. BLAME THE FAT OWNER!"
+    "answer": "The CIA API is back! Set your febbox token to use it."
   },
   {
     "topic": "proxy",
