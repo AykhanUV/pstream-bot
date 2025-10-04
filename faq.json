@@ -42,7 +42,7 @@
   {
     "topic": "cia_api_status",
     "question": "What is the status of CIA API?",
-    "answer": "The CIA API is currently down. We recommend using the FED API instead, which is more stable and offers a wider range of content."
+    "answer": "The CIA API is down. BLAME THE FAT OWNER!"
   },
   {
     "topic": "proxy",
@@ -65,8 +65,8 @@
     "answer": "If your Febbox token fails, first try setting up a custom DNS 1.1.1.1 or NextDNS, as your Internet Service Provider may be blocking it. If that doesn't work, the issue may be with the Febbox/Fed-Api service itself. In that case, the only solution is to wait and try again later."
   },
   {
-    "topic": "febbox/fedapi_setup",
-    "question": "How can I setup FED API/Febbox token?",
+    "topic": "febbox/fedapi_setup/ciaapi_setup",
+    "question": "How can I setup FED API/CIA API/Febbox token?",
     "answer": "You can find a detailed guide here https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
   },
   {
