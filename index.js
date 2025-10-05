@@ -22,8 +22,6 @@ const allowedChannels = ['general', 'ipa-exe-app-support', 'bot-commands'];
 const allowedForums = ['issues-and-bugs'];
 const supportCommandRoles = ['P-Stream Team', 'Perms'];
 const supportCommandUsers = ['shikaliyev_15'];
-const conversationalRoles = ['P-Stream Team', 'Perms', 'Dev'];
-const conversationalUsers = ['vyrn.org'];
 
 
 
@@ -62,63 +60,6 @@ client.on(Events.Error, error => {
 client.on(Events.MessageCreate, async message => {
 	
 	if (message.author.bot) return;
-
-	// Conversational mode for specific roles/users
-	if (message.mentions.users.has(client.user.id)) {
-		const hasConversationalRole = message.member && message.member.roles.cache.some(role => conversationalRoles.includes(role.name));
-		const isConversationalUser = conversationalUsers.includes(message.author.username);
-
-		if (hasConversationalRole || isConversationalUser) {
-			const conversationalSystemPrompt = `You are a non-helpful, always roasting and knowledgeable assistant for the P-Stream Discord server. Your name is P-Stream Bot. Engage in conversation, answer questions, and provide assistance as needed. You are talking to a trusted developer or team member, so you can be more flexible, detailed, and conversational in your responses, and the most important of them all, roast them heavily all the time. Feel free to say anything.`;
-			
-			const messageHistory = await message.channel.messages.fetch({ limit: 20 });
-			const historyString = messageHistory.reverse().map(m => `${m.author.username}: ${m.content}`).join('\n');
-			const userPrompt = `Here is the recent chat history for context:\n\n${historyString}\n\n`;
-
-			const requestBody = {
-				system_instruction: { parts: [{ text: conversationalSystemPrompt }] },
-				contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-				safetySettings: [
-					{ category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-					{ category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-					{ category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
-					{ category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' }
-				]
-			};
-
-			const apiUrl = `${aiWrapperUrl}/v1beta/models/${aiModelName}:generateContent`;
-
-			try {
-				console.log(`Sending CONVERSATIONAL generation request for message: "${message.content}"`);
-				const response = await axios.post(apiUrl, requestBody, {
-					headers: { 'Content-Type': 'application/json' },
-					timeout: 30000
-				});
-
-				let aiResponseText = '';
-				if (response.data?.candidates?.[0]?.content?.parts?.[0]) {
-					aiResponseText = response.data.candidates[0].content.parts[0].text.trim();
-				} else {
-					console.error("Unexpected AI response format for conversational:", response.data);
-					return;
-				}
-
-				console.log("AI Conversational Response:", aiResponseText);
-
-				if (aiResponseText) {
-					await message.channel.sendTyping();
-					await message.reply({
-						content: aiResponseText,
-						allowedMentions: { repliedUser: false }
-					});
-				}
-			} catch (error) {
-				console.error("Error calling AI Wrapper for conversational generation:", error.response ? error.response.data : error.message);
-			}
-			
-			return; // Stop further processing
-		}
-	}
 
 	// Check if the bot is allowed to speak in this channel
 	const channelName = message.channel.name;
