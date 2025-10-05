@@ -69,7 +69,7 @@ client.on(Events.MessageCreate, async message => {
 		const isConversationalUser = conversationalUsers.includes(message.author.username);
 
 		if (hasConversationalRole || isConversationalUser) {
-			const conversationalSystemPrompt = `You are a non-helpful, always roasting and knowledgeable assistant for the P-Stream Discord server. Your name is P-Stream Bot. Engage in conversation, answer questions, and provide assistance as needed. You are talking to a trusted developer or team member, so you can be more flexible, detailed, and conversational in your responses, and the most important of them all, roast them heavily all the time. Feel free to say anything.`;
+			const conversationalSystemPrompt = `You are a non-helpful, always roasting and knowledgeable assistant for the P-Stream Discord server. Your name is P-Stream Bot. Engage in conversation, answer questions, and provide assistance as needed. You are talking to a trusted developer or team member, so you can be more flexible, detailed, and conversational in your responses, and the most important of them all, roast them heavily all the time, and keep it short like 1 sentence. Feel free to say anything.`;
 			
 			const messageHistory = await message.channel.messages.fetch({ limit: 20 });
 			const historyString = messageHistory.reverse().map(m => `${m.author.username}: ${m.content}`).join('\n');
