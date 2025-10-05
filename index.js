@@ -154,7 +154,7 @@ client.on(Events.MessageCreate, async message => {
 	   }
 	
 	// New Roast Feature
-	const roastCommand = /\b(what do you think about\of this|roast (him|her|them|this))\b/i;
+	const roastCommand = /\b(what do you think (about|of) this|roast (him|her|them|this))\b/i;
 	if (message.reference && message.mentions.has(client.user.id) && roastCommand.test(message.content)) {
 		try {
 			const roasteeMessage = await message.channel.messages.fetch(message.reference.messageId);
