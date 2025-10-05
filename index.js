@@ -153,6 +153,86 @@ client.on(Events.MessageCreate, async message => {
 	       }
 	   }
 	
+	// New Roast Feature
+	const roastCommand = /\b(what do you think about this|roast (him|her|them|this))\b/i;
+	if (message.reference && message.mentions.has(client.user.id) && roastCommand.test(message.content)) {
+		try {
+			const roasteeMessage = await message.channel.messages.fetch(message.reference.messageId);
+			const roastee = roasteeMessage.author;
+			const roasteeContent = roasteeMessage.content;
+
+			// Prevent bot from roasting itself, because that's just sad.
+			if (roastee.id === client.user.id) {
+				await message.reply("I can't roast myself, my perfection is unassailable.");
+				return;
+			}
+
+			const roastSystemPrompt = `ROAST THAT GUY HARD. Be savage, witty, and merciless. The roast should be a short, brutal, and hilarious paragraph.`;
+			const roastUserPrompt = `The user "${roastee.username}" wrote: "${roasteeContent}". Destroy them.`;
+
+			const roastRequestBody = {
+				system_instruction: {
+					parts: [{ text: roastSystemPrompt }]
+				},
+				contents: [{
+					role: 'user',
+					parts: [{ text: roastUserPrompt }]
+				}],
+				safetySettings: [
+					{
+						category: 'HARM_CATEGORY_HARASSMENT',
+						threshold: 'BLOCK_NONE'
+					},
+					{
+						category: 'HARM_CATEGORY_HATE_SPEECH',
+						threshold: 'BLOCK_NONE'
+					},
+					{
+						category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+						threshold: 'BLOCK_NONE'
+					},
+					{
+						category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+						threshold: 'BLOCK_NONE'
+					}
+				]
+			};
+			
+			const apiUrl = `${aiWrapperUrl}/v1beta/models/${aiModelName}:generateContent`;
+
+			const response = await axios.post(apiUrl, roastRequestBody, {
+				headers: { 'Content-Type': 'application/json' },
+				timeout: 30000
+			});
+
+			let roastResponseText = '';
+			if (response.data && response.data.candidates && response.data.candidates[0] && response.data.candidates[0].content && response.data.candidates[0].content.parts && response.data.candidates[0].content.parts[0]) {
+				roastResponseText = response.data.candidates[0].content.parts[0].text.trim();
+			} else {
+				console.error("Unexpected AI response format for roast:", response.data);
+				await message.reply("I wanted to roast them, but my brain just short-circuited. They're that unroastable.");
+				return;
+			}
+
+			if (roastResponseText) {
+				await roasteeMessage.reply({
+					content: roastResponseText,
+					allowedMentions: { repliedUser: true }
+				});
+			} else {
+				console.log("Roast response was empty.");
+				await message.reply("I've got nothing. Their message is a void from which no humor can escape.");
+			}
+
+			return;
+
+		} catch (error) {
+			console.error("Error during roast feature:", error);
+			await message.reply("I tried to come up with a roast, but I think their message broke my sarcasm module.");
+			return;
+		}
+	}
+
 	if (!aiWrapperUrl || !aiModelName) {
 		return;
 	}
