@@ -63,39 +63,20 @@ client.on(Events.MessageCreate, async message => {
 	
 	if (message.author.bot) return;
 
-	// Conversational & Roast mode for specific roles/users
+	// Conversational mode for specific roles/users
 	if (message.mentions.users.has(client.user.id)) {
 		const hasConversationalRole = message.member && message.member.roles.cache.some(role => conversationalRoles.includes(role.name));
 		const isConversationalUser = conversationalUsers.includes(message.author.username);
 
 		if (hasConversationalRole || isConversationalUser) {
-			const roastCommand = /\b(roast (him|her|them)|roast this|what do you think about this)\b/i;
-			let systemPrompt;
-			let userPrompt;
-			let targetMessageContent = '';
-
-			if (message.reference && roastCommand.test(message.content)) {
-				// --- ROAST MODE ---
-				try {
-					const targetMessage = await message.channel.messages.fetch(message.reference.messageId);
-					targetMessageContent = targetMessage.content;
-					systemPrompt = `You are a roast bot. A user is replying to a message and has asked you to roast the original author. Your response must be a witty, short, and funny roast based on their message. Keep it to 1-2 sentences. Do not be helpful.`;
-					userPrompt = `Roast the user who wrote the following message: "${targetMessageContent}"`;
-					await message.react('🔥');
-				} catch (error) {
-					console.error("Error fetching message for roast command:", error);
-					return;
-				}
-			} else {
-				// --- GENERAL CONVERSATIONAL MODE ---
-				systemPrompt = `You are a helpful, friendly, and knowledgeable assistant for the P-Stream Discord server. Your name is P-Stream Bot. Engage in conversation, answer questions, and provide assistance as needed. You are talking to a trusted developer or team member, so you can be more flexible, detailed, and conversational in your responses. Feel free to provide code examples, technical explanations, or brainstorm ideas.`;
-				const messageHistory = await message.channel.messages.fetch({ limit: 20 });
-				const historyString = messageHistory.reverse().map(m => `${m.author.username}: ${m.content}`).join('\n');
-				userPrompt = `Here is the recent chat history for context:\n\n${historyString}\n\nBased on this history, provide a helpful and conversational response to the latest message.`;
-			}
+			const conversationalSystemPrompt = `You are a non-helpful, always roasting and knowledgeable assistant for the P-Stream Discord server. Your name is P-Stream Bot. Engage in conversation, answer questions, and provide assistance as needed. You are talking to a trusted developer or team member, so you can be more flexible, detailed, and conversational in your responses, and the most important of them all, roast them heavily all the time, and keep it short like 1 sentence. Feel free to say anything.`;
+			
+			const messageHistory = await message.channel.messages.fetch({ limit: 20 });
+			const historyString = messageHistory.reverse().map(m => `${m.author.username}: ${m.content}`).join('\n');
+			const userPrompt = `Here is the recent chat history for context:\n\n${historyString}\n\n`;
 
 			const requestBody = {
-				system_instruction: { parts: [{ text: systemPrompt }] },
+				system_instruction: { parts: [{ text: conversationalSystemPrompt }] },
 				contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
 				safetySettings: [
 					{ category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
@@ -108,7 +89,7 @@ client.on(Events.MessageCreate, async message => {
 			const apiUrl = `${aiWrapperUrl}/v1beta/models/${aiModelName}:generateContent`;
 
 			try {
-				console.log(`Sending privileged generation request. Roast Mode: ${!!targetMessageContent}`);
+				console.log(`Sending CONVERSATIONAL generation request for message: "${message.content}"`);
 				const response = await axios.post(apiUrl, requestBody, {
 					headers: { 'Content-Type': 'application/json' },
 					timeout: 30000
@@ -118,23 +99,21 @@ client.on(Events.MessageCreate, async message => {
 				if (response.data?.candidates?.[0]?.content?.parts?.[0]) {
 					aiResponseText = response.data.candidates[0].content.parts[0].text.trim();
 				} else {
-					console.error("Unexpected AI response format for privileged user:", response.data);
+					console.error("Unexpected AI response format for conversational:", response.data);
 					return;
 				}
 
-				console.log("AI Privileged Response:", aiResponseText);
+				console.log("AI Conversational Response:", aiResponseText);
 
 				if (aiResponseText) {
 					await message.channel.sendTyping();
-					// In roast mode, reply to the message being roasted. Otherwise, reply to the command issuer.
-					const replyTarget = targetMessageContent ? await message.channel.messages.fetch(message.reference.messageId) : message;
-					await replyTarget.reply({
+					await message.reply({
 						content: aiResponseText,
 						allowedMentions: { repliedUser: false }
 					});
 				}
 			} catch (error) {
-				console.error("Error calling AI Wrapper for privileged generation:", error.response ? error.response.data : error.message);
+				console.error("Error calling AI Wrapper for conversational generation:", error.response ? error.response.data : error.message);
 			}
 			
 			return; // Stop further processing
