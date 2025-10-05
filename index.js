@@ -115,7 +115,6 @@ client.on(Events.MessageCreate, async message => {
 	// Check for mute commands
 	const lowerCaseMessage = message.content.toLowerCase();
 	const isMuteCommand = lowerCaseMessage.includes('shut up') || lowerCaseMessage.includes('bot quiet');
-	let isSpecialCommand = false;
 	
 	let isReplyingToBot = false;
 	if (message.reference && message.reference.messageId) {
@@ -148,7 +147,6 @@ client.on(Events.MessageCreate, async message => {
 	           // Overwrite the 'message' object with the target message.
 	           // The rest of the script will now use this as the context for processing and replying.
 	           message = targetMessage;
-	     isSpecialCommand = true;
 	       } catch (error) {
 	           console.error("Error fetching message for 'answer him' command:", error);
 	           return; // Stop processing if we can't get the context right.
@@ -225,7 +223,7 @@ client.on(Events.MessageCreate, async message => {
 				console.log("Roast response was empty.");
 				await message.reply("I've got nothing. Their message is a void from which no humor can escape.");
 			}
-			isSpecialCommand = true;
+
 			return;
 
 		} catch (error) {
@@ -235,7 +233,9 @@ client.on(Events.MessageCreate, async message => {
 		}
 	}
 
-	if (!isSpecialCommand && aiWrapperUrl && aiModelName) {
+	if (!aiWrapperUrl || !aiModelName) {
+		return;
+	}
 
 	let userMessage = message.content.trim();
 
@@ -408,10 +408,9 @@ If the message includes an image, analyze it for extra context. For example, gre
 
 	} catch (error) {
 		console.error("Error calling AI Wrapper for generation:", error.response ? error.response.data : error.message);
-		      
+        
 		
 	}
-}
 });
 
 
