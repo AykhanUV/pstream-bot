@@ -40,9 +40,9 @@
     "answer": "Check https://discord.com/channels/1267558147682205738/1385316685850083471 for up to date server information!"
   },
   {
-    "topic": "cia_api_status",
-    "question": "What is the status of CIA API?",
-    "answer": "The CIA API is back! Set your febbox token to use it."
+    "topic": "cia_api_missing",
+    "question": "CIA API is missing, even though my febbox token is set",
+    "answer": "CIA API is movies only at the moment, shows are not supported"
   },
   {
     "topic": "proxy",
