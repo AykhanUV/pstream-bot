@@ -304,14 +304,14 @@ ${faqStringForPrompt}
 
 Follow these instructions precisely:
 1.  **Advanced Social Context Check (VERY IMPORTANT):** The chat history now includes reply context, like "UserA (replying to UserB): message".
-	   *   **Human-to-Human Conversation:** If the latest message shows a user replying to another user (who is not you, the bot), it means a conversation is in progress. You MUST NOT respond. Your goal is to avoid interrupting a human who is already helping. In this case, you MUST respond with ONLY the exact text `[IGNORE]` and nothing else.
+	   *   **Human-to-Human Conversation:** If the latest message shows a user replying to another user (who is not you, the bot), it means a conversation is in progress. You MUST NOT respond. Your goal is to avoid interrupting a human who is already helping. In this case, respond with [IGNORE].
 	   *   **Exception - Bot Mentioned:** If you are explicitly mentioned in a reply (e.g., "@P-stream support or @1366455600925511770"), you MUST respond. Synthesize information from the FAQ to be as helpful as possible, even if it's not a direct match.
 	   *   **Replying to the Bot:** If the user is replying to you, you should always process the message.
-2.  **Confidence Check (Flexible):** Is the user's question (from text or image) **relevant** to the FAQ? If a clear connection can be made (e.g., "forbidden" and "download" relates to 'download_forbidden'), you should answer. If not, respond with ONLY the exact text `[IGNORE]`. Do not guess.
+2.  **Confidence Check (Flexible):** Is the user's question (from text or image) **relevant** to the FAQ? If a clear connection can be made (e.g., "forbidden" and "download" relates to 'download_forbidden'), you should answer. If not, respond with [IGNORE]. Do not guess.
 3.  **Relevance Check:** Only mention a specific solution (like 'FED API') if the user's problem is directly related to it (e.g., slow streaming). Do not offer unsolicited advice.
 4.  **Analyze Intent:** Is the user asking a genuine support question about pstream?
 	   *   **Forum Post Exception:** If the message is a forum post (Title + Body) and the body is short (e.g., "title says it all"), the Title is the user's question.
-	   *   If the message is not a clear support question about pstream, respond with ONLY the exact text `[IGNORE]`.
+	   *   If the message is not a clear support question about pstream, respond with [IGNORE].
 5.  **Answering:** If the question passes all checks, provide a concise answer based on the FAQ.
 	   *   **Safety:** For "is pstream safe?", respond with: "Yes, it is safe. The source code is available on GitHub: <https://github.com/p-stream/p-stream>"
 	   *   **Video/Audio Issues:** This is a two-step process.
@@ -382,9 +382,9 @@ If the message includes an image, analyze it for extra context. For example, gre
 
 		      
 		      const ignoreMarker = "[IGNORE]";
-	
+
 		
-		if (aiResponseText && !aiResponseText.startsWith(ignoreMarker)) {
+		if (aiResponseText && aiResponseText !== ignoreMarker) {
 		          
 		          const disclaimer = "\n-# This is AI generated, may not be accurate";
 		          const finalResponse = aiResponseText + disclaimer;
@@ -398,10 +398,10 @@ If the message includes an image, analyze it for extra context. For example, gre
 			if (message.channel.isThread()) {
 				respondedThreads.add(message.channel.id);
 			}
-		} else if (aiResponseText.startsWith(ignoreMarker)) {
-			         
-			         console.log("AI response started with [IGNORE]. No reply sent.");
-			     } else {
+		} else if (aiResponseText === ignoreMarker) {
+		          
+		          console.log("AI response was [IGNORE]. No reply sent.");
+		      } else {
 		          
 		          console.log("AI response was empty or an error occurred before processing. No reply sent.");
 		      }
