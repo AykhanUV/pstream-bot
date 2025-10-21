@@ -15,7 +15,7 @@
     "answer": "First, select the external subtitles option and try a different subtitle file. If none are correct, you can adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can upload a .srt subtitle file to be used."
   },
   {
-    "topic": "subtitles_disappear"
+    "topic": "subtitles_disappear",
     "question": "The subtitles disappear or are broken in fullscreen.",
     "answer": "Disable hardware acceleration on your browser to fix this bug."
   },
