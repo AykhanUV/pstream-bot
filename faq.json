@@ -62,7 +62,7 @@
   {
     "topic": "extension",
     "question": "Why do I need the extension? What does it do?",
-    "answer": "The extension acts as a local proxy, allowing to unlock new high quality sources. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal."
+    "answer": "The extension is basically a local proxy, allowing to unlock new high quality sources. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal."
   },
   {
     "topic": "about_extension",
