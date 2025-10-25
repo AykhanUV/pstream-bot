@@ -57,7 +57,7 @@
   {
     "topic": "proxy",
     "question": "Why do I need the custom proxy? What does it do?",
-    "answer": "Using the a custom proxy will improve scraping capability and speed."
+    "answer": "Using a custom proxy improves scraping reliability, not speed. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal."
   },
   {
     "topic": "extension",
