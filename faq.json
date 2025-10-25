@@ -62,7 +62,12 @@
   {
     "topic": "extension",
     "question": "Why do I need the extension? What does it do?",
-    "answer": "Using the extension unlock variety of new sources, which will improve your watching experience. Read more here: https://discord.com/channels/1267558147682205738/1274812948971389008/1355658009132404907"
+    "answer": "The extension unlocks new high quality sources, It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal."
+  },
+  {
+    "topic": "about_extension",
+    "question": "Can I learn more about the extension?",
+    "answer": "Read more about the extension here: https://discord.com/channels/1267558147682205738/1274812948971389008/1355658009132404907"
   },
   {
     "topic": "extension_download",
