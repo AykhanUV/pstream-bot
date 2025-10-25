@@ -148,5 +148,15 @@
     "topic": "page_down",
     "question": "Is P-Stream down?",
     "answer": "P-Stream is not likely down. Make sure to go to pstream.mov or check https://discord.com/channels/1267558147682205738/1385316685850083471b for more info."
+  },
+  {
+    "topic": "re-ordering_sources",
+    "question": "How can I reorder sources? & How can I make a source default?",
+    "answer": "Please go to <https://pstream.mov/settings> and enable 'Reorder Sources' option to reorder sources."
+  },
+  {
+    "topic": "re-ordering_embeds",
+    "question": "How can I re-order embeds? & How can I make sub source of xprime default?",
+    "answer": "Please go to <https://pstream.mov/admin> and enable 'Embed Order Settings' option to reorder embeds.."
   }
 ]
