@@ -1,8 +1,16 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const axios = require('axios'); 
+const axios = require('axios');
 const { Client, Events, GatewayIntentBits, Collection, MessageFlags, ChannelType, AttachmentBuilder } = require('discord.js');
-const { token, aiWrapperUrl, aiModelName } = require('./config.json'); 
+const config = require('./config.json');
+const { token, aiModelName, apiKey } = config;
+
+// Check if custom base URL is provided
+const hasCustomBaseUrl = config.aiWrapperUrl && config.aiWrapperUrl.trim() !== '';
+
+// Use custom base URL if provided, otherwise use default Google AI API endpoint
+const DEFAULT_API_BASE_URL = 'https://generativelanguage.googleapis.com';
+const aiWrapperUrl = hasCustomBaseUrl ? config.aiWrapperUrl : DEFAULT_API_BASE_URL;
 
 
 
@@ -36,18 +44,49 @@ try {
 
 
 function formatFaqForPrompt(faqItems) {
-	
+
 	return faqItems.map(item => `Q: ${item.question}\nA: ${item.answer}`).join('\n\n');
 }
 const faqStringForPrompt = formatFaqForPrompt(faqData);
+
+// Helper function to build API request headers
+function buildApiHeaders() {
+	const headers = { 'Content-Type': 'application/json' };
+
+	// Add API key to headers if it's configured
+	if (apiKey && apiKey.trim() !== '') {
+		headers['x-goog-api-key'] = apiKey;
+	}
+
+	return headers;
+}
 
 
 
 
 client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
-	if (!aiWrapperUrl || !aiModelName) {
-		console.warn("AI Wrapper URL or Model Name missing in config.json. AI features will be disabled.");
+
+	// Validate API configuration
+	const hasApiKey = apiKey && apiKey.trim() !== '';
+
+	if (!hasCustomBaseUrl && !hasApiKey) {
+		console.error("CONFIGURATION ERROR: API key is REQUIRED when custom base URL is not provided.");
+		console.error("Please add an 'apiKey' field to your config.json file.");
+		console.error("Bot will not respond to AI requests until this is fixed.");
+		process.exit(1); // Exit the bot to prevent running with invalid configuration
+	}
+
+	if (!hasCustomBaseUrl && hasApiKey) {
+		console.log("Using default API endpoint with API key authentication.");
+	} else if (hasCustomBaseUrl && hasApiKey) {
+		console.log(`Using custom base URL (${aiWrapperUrl}) with API key authentication.`);
+	} else if (hasCustomBaseUrl && !hasApiKey) {
+		console.log(`Using custom base URL (${aiWrapperUrl}) without API key authentication.`);
+	}
+
+	if (!aiModelName) {
+		console.warn("AI Model Name missing in config.json. AI features will be disabled.");
 	}
 });
 
@@ -201,7 +240,7 @@ client.on(Events.MessageCreate, async message => {
 			const apiUrl = `${aiWrapperUrl}/v1beta/models/${aiModelName}:generateContent`;
 
 			const response = await axios.post(apiUrl, roastRequestBody, {
-				headers: { 'Content-Type': 'application/json' },
+				headers: buildApiHeaders(),
 				timeout: 30000
 			});
 
@@ -365,8 +404,8 @@ If the message includes an image, analyze it for extra context. For example, gre
 	try {
   console.log(`Sending generation request for message: "${userMessage}"`);
 		const response = await axios.post(apiUrl, requestBody, {
-			headers: { 'Content-Type': 'application/json' },
-			timeout: 30000 
+			headers: buildApiHeaders(),
+			timeout: 30000
 		});
 
 		
