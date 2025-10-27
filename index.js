@@ -206,7 +206,7 @@ client.on(Events.MessageCreate, async message => {
 				return;
 			}
 
-			const roastSystemPrompt = `ROAST THAT GUY HARD. Be savage, witty, and merciless. The roast should be a short, brutal, and hilarious paragraph.`;
+			const roastSystemPrompt = `ROAST THAT GUY HARD. Be savage, witty, and merciless. The roast should be a short, brutal, max 2 sentences, use some sprinkle of vulgarity.`;
 			const roastUserPrompt = `The user "${roastee.username}" wrote: "${roasteeContent}". Destroy them.`;
 
 			const roastRequestBody = {
