@@ -55,6 +55,11 @@
     "answer": "CIA API is down at the moment. Please use FED API instead"
   },
   {
+    "topic": "default_setup",
+    "question": "Why is the default setup not recommended? & What is the default setup?",
+    "answer": "Default setup relies on community driven proxies which are usually slow. That's why it is not recommended for the best user experience"
+  },
+  {
     "topic": "proxy",
     "question": "Why do I need the custom proxy? What does it do?",
     "answer": "Using a custom proxy improves scraping reliability, not speed. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal."
