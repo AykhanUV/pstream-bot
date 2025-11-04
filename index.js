@@ -420,12 +420,12 @@ If the message includes an image, analyze it for extra context. For example, gre
 
 		console.log("AI Generated Response:", aiResponseText);
 
-		      
+
 		      const ignoreMarker = "[IGNORE]";
 
-		
-		if (aiResponseText && aiResponseText !== ignoreMarker) {
-		          
+
+		if (aiResponseText && !aiResponseText.startsWith(ignoreMarker)) {
+
 		          const disclaimer = "\n-# This is AI generated, may not be accurate";
 		          const finalResponse = aiResponseText + disclaimer;
 
@@ -438,11 +438,11 @@ If the message includes an image, analyze it for extra context. For example, gre
 			if (message.channel.isThread()) {
 				respondedThreads.add(message.channel.id);
 			}
-		} else if (aiResponseText === ignoreMarker) {
-		          
+		} else if (aiResponseText.startsWith(ignoreMarker)) {
+
 		          console.log("AI response was [IGNORE]. No reply sent.");
 		      } else {
-		          
+
 		          console.log("AI response was empty or an error occurred before processing. No reply sent.");
 		      }
 
