@@ -157,7 +157,7 @@
   {
     "topic": "page_down",
     "question": "Is P-Stream down?",
-    "answer": "P-Stream is not likely down. Make sure to go to pstream.mov or check https://discord.com/channels/1267558147682205738/1385316685850083471b for more info. Your ISP might be blocking the site, use 1.1.1.1 to bypass."
+    "answer": "P-Stream is not likely down. Make sure to go to pstream.mov or check https://discord.com/channels/1267558147682205738/1385316685850083471 for more info. Your ISP might be blocking the site, use 1.1.1.1 to bypass."
   },
   {
     "topic": "re-ordering_sources",
