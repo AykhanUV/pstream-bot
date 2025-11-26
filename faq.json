@@ -168,5 +168,10 @@
     "topic": "re-ordering_embeds",
     "question": "How can I re-order embeds? & How can I make sub source of xprime default?",
     "answer": "Please go to <https://pstream.mov/admin> and enable 'Embed Order Settings' option to reorder embeds.."
+  },
+  {
+    "topic": "stranger_things",
+    "question": "Will stranger things season 5 be on P-Stream?",
+    "answer": "Please check https://discord.com/channels/1267558147682205738/1267573463325868236/1443046508394975305"
   }
 ]
