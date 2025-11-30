@@ -50,11 +50,6 @@
     "answer": "Check https://discord.com/channels/1267558147682205738/1385316685850083471 for up to date server information!"
   },
   {
-    "topic": "cia_api",
-    "question": "CIA API is missing",
-    "answer": "CIA API is down at the moment. Please use FED API instead"
-  },
-  {
     "topic": "default_setup",
     "question": "Why is the default setup not recommended? & What is the default setup?",
     "answer": "Default setup relies on community driven proxies which are usually slow. That's why it is not recommended for the best user experience"
@@ -173,5 +168,25 @@
     "topic": "stranger_things",
     "question": "Will stranger things season 5 be on P-Stream?",
     "answer": "Please check https://discord.com/channels/1267558147682205738/1267573463325868236/1443046508394975305"
+  },
+  {
+    "topic": "xprime_ads",
+    "question": "Why are there ads?",
+    "answer": "XPrime needs ads to pay for his servers. He asked that we implement them so we can continue to use them for free. You can disable them from settings, disable XPrime ads. When enabled (default) the ads will only show for XPrime sources."
+  },
+  {
+    "topic": "disable_ads",
+    "question": "How do I disable popup ads?",
+    "answer": "XPrime needs ads to pay for his servers. He asked that we implement them so we can continue to use them for free. You can disable them from settings, disable XPrime ads. When enabled (default) the ads will only show for XPrime sources."
+  },
+  {
+    "topic": "pstream_has_ads",
+    "question": "Does P-Stream have ads?",
+    "answer": "P-Stream has 1 static ad on the homepage, meaning it doesnt move or interupt your viewing. It can even be hidden! However, the source XPrime also has optional popup ads that support XPrime's servers and allow us to continue using it for free. Both ads can be disabled!"
+  },
+  {
+    "topic": "support_pstream",
+    "question": "Does P-Stream make money? How can I support P-Stream?",
+    "answer": "P-Stream is hosted out of pocket, so your contribution is appreciated! ◡̈ Donate here: https://rentry.co/h5mypdfshttps://rentry.co/h5mypdfs"
   }
 ]
