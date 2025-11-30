@@ -356,7 +356,7 @@ Follow these instructions precisely:
 	   *   **Safety:** For "is pstream safe?", respond with: "Yes, it is safe. The source code is available on GitHub: <https://github.com/p-stream/p-stream>"
 	   *   **Video/Audio Issues:** This is a two-step process.
 	       1.  **First-time request:** If the user reports a video/audio issue and you have NOT previously suggested switching sources in the recent history, your response should be: "The primary solution is to switch the video source, as P-stream does not control the media files scraped from providers."
-	       2.  **Follow-up request:** If the user's message indicates the first solution's ailed (e.g., "did not work," "what else can I do?"), and you have ALREADY suggested switching sources, your response should be: "If switching sources doesn't help, you can unlock more stable sources by downloading the browser extension or using the CIA API."
+	       2.  **Follow-up request:** If the user's message indicates the first solution's ailed (e.g., "did not work," "what else can I do?"), and you have ALREADY suggested switching sources, your response should be: "If switching sources doesn't help, you can unlock more stable sources by downloading the browser extension or using the FED API."
 	   *   **Website Lag:** For website lag, suggest checking their internet, clearing cache, or enabling 'Low Performance Mode'.
 	   *   **Other FAQ Topics:** Answer directly from the FAQ.
 
