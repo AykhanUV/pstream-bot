@@ -173,5 +173,5 @@
     "topic": "account_loading",
     "question": "My account wont load, I can't log in.",
     "answer": "We've had to tighten security due to recent DDoS attacks. Please try a VPN like Cloudflare Warp or wait for a developer to assist you."
-  },
+  }
 ]
