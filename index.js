@@ -26,6 +26,8 @@ const client = new Client({
 const mutedChannels = new Map();
 const respondedThreads = new Set();
 const disabledSupportChannels = new Set();
+const freeChatChannels = new Set();
+const roastModeChannels = new Set();
 const allowedChannels = ['general', 'mobile-app-support', 'bot-commands'];
 const allowedForums = ['issues-and-bugs'];
 const supportCommandRoles = ['P-Stream Team', 'Perms'];
@@ -48,6 +50,18 @@ function formatFaqForPrompt(faqItems) {
 	return faqItems.map(item => `Q: ${item.question}\nA: ${item.answer}`).join('\n\n');
 }
 const faqStringForPrompt = formatFaqForPrompt(faqData);
+
+const ROAST_SYSTEM_PROMPT = `ROAST THAT GUY HARD. Be savage, witty, and merciless. The roast should be a short, brutal, max 2 sentences, use some sprinkle of vulgarity.`;
+
+const EVIL_CASUAL_PROMPT = `You are a casual, slightly evil conversationalist.
+- You are NOT a support bot in this mode. You are just hanging out.
+- Your personality is witty, sarcastic, and a bit mean (in a fun way).
+- If a user says something dumb or acts "brain rotted", roast them mercilessly.
+- Be concise. Don't write essays.
+- Use slang if appropriate, but keep it readable.
+- You can use vulgarity if it fits the "evil" persona.
+- Do NOT use [IGNORE]. You are free to chat about anything.
+- If asked for help, you can still be helpful, but do it with an attitude.`;
 
 // Helper function to build API request headers
 function buildApiHeaders() {
@@ -110,9 +124,10 @@ client.on(Events.MessageCreate, async message => {
 		return;
 	}
 
-	// Check for support toggle commands
+	// Check for commands
 	const hasPermission = message.member.roles.cache.some(role => supportCommandRoles.includes(role.name)) || supportCommandUsers.includes(message.author.username);
-	if (message.content.startsWith('-support')) {
+	
+	if (message.content.startsWith('!support')) {
 		if (hasPermission) {
 			const command = message.content.split(' ')[1];
 			const channelId = message.channel.id;
@@ -133,11 +148,63 @@ client.on(Events.MessageCreate, async message => {
 				setTimeout(() => replyMsg.delete().catch(console.error), 5000);
 			}
 		}
-		return; // Stop processing after handling a support command
+		return;
 	}
 
-	// Check if support is disabled for this channel
-	if (disabledSupportChannels.has(message.channel.id)) {
+	if (message.content.startsWith('!freechat')) {
+		if (hasPermission) {
+			const command = message.content.split(' ')[1];
+			const channelId = message.channel.id;
+			let replyMsg;
+
+			if (command === 'on') {
+				freeChatChannels.add(channelId);
+				// Disable other modes to avoid conflict
+				roastModeChannels.delete(channelId);
+				replyMsg = await message.reply('Freechat mode enabled. I am now a casual, slightly evil conversationalist.');
+			} else if (command === 'off') {
+				freeChatChannels.delete(channelId);
+				replyMsg = await message.reply('Freechat mode disabled. Back to support duties.');
+			} else if (command === 'status') {
+				const status = freeChatChannels.has(channelId) ? 'enabled' : 'disabled';
+				replyMsg = await message.reply(`Freechat mode is currently **${status}** for this channel.`);
+			}
+
+			if (replyMsg) {
+				setTimeout(() => replyMsg.delete().catch(console.error), 5000);
+			}
+		}
+		return;
+	}
+
+	if (message.content.startsWith('!roast')) {
+		if (hasPermission) {
+			const command = message.content.split(' ')[1];
+			const channelId = message.channel.id;
+			let replyMsg;
+
+			if (command === 'on') {
+				roastModeChannels.add(channelId);
+				// Disable other modes to avoid conflict
+				freeChatChannels.delete(channelId);
+				replyMsg = await message.reply('Roast mode enabled. Prepare to be destroyed.');
+			} else if (command === 'off') {
+				roastModeChannels.delete(channelId);
+				replyMsg = await message.reply('Roast mode disabled. I will be nice(r) now.');
+			} else if (command === 'status') {
+				const status = roastModeChannels.has(channelId) ? 'enabled' : 'disabled';
+				replyMsg = await message.reply(`Roast mode is currently **${status}** for this channel.`);
+			}
+
+			if (replyMsg) {
+				setTimeout(() => replyMsg.delete().catch(console.error), 5000);
+			}
+		}
+		return;
+	}
+
+	// Check if support is disabled for this channel (and not in a special mode)
+	if (disabledSupportChannels.has(message.channel.id) && !freeChatChannels.has(message.channel.id) && !roastModeChannels.has(message.channel.id)) {
 		return;
 	}
 
@@ -421,30 +488,38 @@ If the message includes an image, analyze it for extra context. For example, gre
 		console.log("AI Generated Response:", aiResponseText);
 
 
-		      const ignoreMarker = "[IGNORE]";
+		const ignoreMarker = "[IGNORE]";
+		
+		// Bypass ignore marker for special modes
+		const isSpecialMode = freeChatChannels.has(message.channel.id) || roastModeChannels.has(message.channel.id);
+		const shouldRespond = isSpecialMode || (aiResponseText && !aiResponseText.startsWith(ignoreMarker));
 
+		if (shouldRespond) {
+		 // Remove ignore marker if it somehow appears in special modes (though prompt says not to use it)
+		 let finalResponseText = aiResponseText;
+		 if (isSpecialMode && finalResponseText.startsWith(ignoreMarker)) {
+		  finalResponseText = finalResponseText.replace(ignoreMarker, "").trim();
+		 }
 
-		if (aiResponseText && !aiResponseText.startsWith(ignoreMarker)) {
+		 if (finalResponseText) {
+		  const disclaimer = "\n-# This is AI generated, may not be accurate";
+		  const finalResponse = finalResponseText + disclaimer;
 
-		          const disclaimer = "\n-# This is AI generated, may not be accurate";
-		          const finalResponse = aiResponseText + disclaimer;
-
-		          await message.channel.sendTyping();
-			await message.reply({
-				content: finalResponse,
-				allowedMentions: { repliedUser: false }
-			});
-			// If in a thread, mark it as responded to
-			if (message.channel.isThread()) {
-				respondedThreads.add(message.channel.id);
-			}
+		  await message.channel.sendTyping();
+		  await message.reply({
+		   content: finalResponse,
+		   allowedMentions: { repliedUser: false }
+		  });
+		  // If in a thread, mark it as responded to
+		  if (message.channel.isThread()) {
+		   respondedThreads.add(message.channel.id);
+		  }
+		 }
 		} else if (aiResponseText.startsWith(ignoreMarker)) {
-
-		          console.log("AI response was [IGNORE]. No reply sent.");
-		      } else {
-
-		          console.log("AI response was empty or an error occurred before processing. No reply sent.");
-		      }
+		 console.log("AI response was [IGNORE]. No reply sent.");
+		} else {
+		 console.log("AI response was empty or an error occurred before processing. No reply sent.");
+		}
 
 	} catch (error) {
 		console.error("Error calling AI Wrapper for generation:", error.response ? error.response.data : error.message);
