@@ -401,7 +401,17 @@ client.on(Events.MessageCreate, async message => {
 		return content;
 	}))).join('\n');
 
-	const systemPrompt = `You are the official Pstream Support bot. Your responses MUST be short, concise, and directly to the point. Avoid conversational filler.
+	let systemPrompt;
+
+	if (roastModeChannels.has(message.channel.id)) {
+		// --- ROAST MODE ---
+		systemPrompt = ROAST_SYSTEM_PROMPT;
+	} else if (freeChatChannels.has(message.channel.id)) {
+		// --- FREECHAT MODE ---
+		systemPrompt = EVIL_CASUAL_PROMPT;
+	} else {
+		// --- STANDARD SUPPORT MODE ---
+		systemPrompt = `You are the official Pstream Support bot. Your responses MUST be short, concise, and directly to the point. Avoid conversational filler.
 
 Here is your knowledge base (FAQ):
 --- FAQ START ---
@@ -428,6 +438,7 @@ Follow these instructions precisely:
 	   *   **Other FAQ Topics:** Answer directly from the FAQ.
 
 Your primary goal is to be a silent, accurate assistant. If in doubt, do not respond.`;
+	}
 
 	const userPrompt = `Here is the recent chat history for the channel #${message.channel.name}. Use this to understand the current conversation's context:
 --- CHAT HISTORY START ---
