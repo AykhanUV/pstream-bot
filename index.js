@@ -31,7 +31,7 @@ const roastModeChannels = new Set();
 const allowedChannels = ['general', 'mobile-app-support', 'bot-commands'];
 const allowedForums = ['issues-and-bugs'];
 const supportCommandRoles = ['P-Stream Team', 'Perms'];
-const supportCommandUsers = ['aykhanuv'];
+const supportCommandUsers = ['aykhanuv', 'azaz31'];
 
 
 
