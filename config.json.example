@@ -1,7 +1,8 @@
 {
-  "token": "Bot token here",
-  "clientId": "Bot clientId here",
-  "aiWrapperUrl": "http://127.0.0.1:5000",
+  "token": "token",
+  "clientId": "clientid",
+  "aiWrapperUrl": "",
   "aiModelName": "gemini-2.5-flash",
-  "apiKey": ""
+  "apiKey": "apikey",
+  "useCustomAI": false
 }
