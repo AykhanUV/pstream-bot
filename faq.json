@@ -7,17 +7,17 @@
   {
     "topic": "wrong_episode",
     "question": "The episode I’m watching is incorrect, how do I fix it?",
-    "answer": "If the wrong episode is displayed, please switch the video source by clicking the settings cog at the bottom of the player and selecting 'video sources'. Note that content is automatically scraped from various sites, so we don’t control the accuracy. The content provided is not controlled by P-Stream."
+    "answer": "If the wrong episode is displayed, please switch the video source by clicking the settings cog at the bottom of the player and selecting 'video sources'. Note that content is automatically scraped from various sites, so we don’t control the accuracy. The content provided is not controlled by P-Stream and is up to the provider."
   },
   {
     "topic": "subtitles_sync",
     "question": "My subtitles aren’t in sync, what should I do?",
-    "answer": "First, select the external subtitles option and try a different subtitle file. If none are correct, you can adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can upload a .srt subtitle file to be used."
+    "answer": "First, select the external subtitles option and try a different subtitle file. You can also select adjust the subtitle delay by clicking “Customize” in the subtitle settings menu. Alternatively, you can upload a .srt subtitle file to be used."
   },
   {
     "topic": "subtitles_disappear",
     "question": "The subtitles disappear or are broken in fullscreen.",
-    "answer": "Disable hardware acceleration on your browser to fix this bug."
+    "answer": "Disable hardware acceleration on your browser to fix this bug. If that doesn't work, try switching sources or set up Febbox, which generally offers faster speeds and a broader selection of content. Setup guide here: https://discord.com/channels/1267558147682205738/1274812948971389008/1345995252510625855"
   },
   {
     "topic": "slow_source",
@@ -57,12 +57,12 @@
   {
     "topic": "proxy",
     "question": "Why do I need the custom proxy? What does it do?",
-    "answer": "Using a custom proxy improves scraping reliability, not speed. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal."
+    "answer": "Using a custom proxy improves scraping reliability, not speed. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal. The guide to setup a proxy is here: https://docs.pstream.mov/proxy/deploy"
   },
   {
     "topic": "extension",
     "question": "Why do I need the extension? What does it do?",
-    "answer": "The extension is basically a local proxy, allowing to unlock new high quality sources. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal."
+    "answer": "The extension is basically a local proxy, allowing to unlock new high quality sources. It also gives access to IMDB trailers, ratings, and rotten tomato scores on the details modal. Source code is available here: https://github.com/p-stream/extension, and here's some more information: https://rentry.co/htagcrv4"
   },
   {
     "topic": "about_extension",
@@ -167,11 +167,16 @@
   {
     "topic": "support_pstream",
     "question": "Does P-Stream make money? How can I support P-Stream?",
-    "answer": "P-Stream is hosted out of pocket, so your contribution is appreciated! ◡̈ Donate here: https://rentry.co/h5mypdfshttps://rentry.co/h5mypdfs"
+    "answer": "P-Stream is hosted out of pocket, so your contribution is appreciated! ◡̈ Donate here: https://rentry.co/h5mypdfs"
   },
   {
     "topic": "account_loading",
     "question": "My account wont load, I can't log in.",
     "answer": "We've had to tighten security due to recent DDoS attacks. Please try a VPN like Cloudflare Warp or wait for a developer to assist you."
+  },
+  {
+    "topic": "ddos_attacks",
+    "question": "P-Stream is down, what's going on?",
+    "answer": "In the past few days, P-Stream has been under DDoS attacks. We've been working hard to maintain uptime, but it's still possible to experience some downtime. If the site isn't working for you, please check https://discord.com/channels/1267558147682205738/1385316685850083471 if it's down otherwise, please opt to using a VPN like [Cloudflare Warp](https://one.one.one.one) to access the site."
   }
 ]
