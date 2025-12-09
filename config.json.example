@@ -1,0 +1,8 @@
+{
+  "token": "token",
+  "clientId": "clientid",
+  "aiWrapperUrl": "",
+  "aiModelName": "gemini-2.5-flash",
+  "apiKey": "apikey",
+  "useCustomAI": false
+}
